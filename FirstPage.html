@@ -6,45 +6,140 @@
     <title>Mobi-Comm Services Ltd.</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
+    <link rel="stylesheet" href="/css/main.min.css">
 </head>
-<body>
-    <header class="bg-dark">
-    <h1 class="text-center  p-2 text-white">Mobi-Comm Services Ltd.</h1>
+<body class="bg-secondary">
+    <header class="d-flex align-items-center justify-content-center "
+    style="background: url('Images/backgrounf.jpeg') no-repeat center center; background-size: cover; height: 100px;">
+        <h2 class="text-center p-2 text-black">
+            Mobi-Comm Services Ltd.</h2>
+        
+        </header>
+        <div class="container-fluid bg-info">
 
+            <nav class="navbar navbar-expand-sm ">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="Images/logo.jpeg" alt="Logo" style="width:50px;" class="rounded-circle">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item"><a class="nav-link text-black" href="#"><b>About Us</b></a></li>
+                            <li class="nav-item"><a class="nav-link text-black" href="#"><b>Contact</b></a></li>
+                            <li class="nav-item"><a class="nav-link text-black" href="#"><b>Help</b></a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <button class="btn btn-dark text-black" type="button">Search</button>
+                            <a type="button" class="btn btn-dark text-black text-decoration-none ms-3"  href="Login.html">Login</a> 
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
    
-        <!--Nav bar -->
-        <nav  class="navbar navbar-expand-sm navbar-dark">
-            <div  class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="Images/logo.jpeg" alt="Logo" style="width:50px;" class="rounded-circle"> 
-                  </a>
-              
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="mynavbar">
-                <ul  class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" >About Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Help</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                   <button class="btn btn-primary" type="button">Login</button>
-                  <button class="btn btn-primary ms-3" type="button">Search</button>
-                </form>
-
+    
+    <br>
+    <div class="container-fluid">
+        <h3 class="text-black">Online Prepaid Recharge</h3>
+        <p>
+            To recharge your mobile number, enter your mobile number and select the continue option and enter the email to receive an email message.
+            Browse through the available plans and choose one that fits your needs. Proceed with payment using options like UPI, debit/credit card, net banking, or digital wallets.
+            Once the payment is successful, you will receive a confirmation message via Email, indicating that your recharge has been completed.
+        </p>
+    </div>
+    
+    <div class="container m-5 p-5">
+        <div class="d-flex">
+            <div class="card bg-primary bg-opacity-10" style="width: 500px;">
+                <div class="card-title text-center pt-3" style="font-size: 20px;"><b>Mobile Recharge</b></div>
+                <hr>
+                <div class="card-body">
+                    <h3 class="card-text">Mobile number</h3>
+                    <br>
+                    <form>
+                        <input type="tel" class="form-control bg-dark" placeholder="Enter Mobile Number" required>
+                        <br>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">Continue</button>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <img src="Images/images.jpeg" class="float-end" alt="Image" style="height: 300px; width: 400px;">
+            </div>
+        </div>
+    </div>
+    
+  
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Email</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="email" class="form-control" placeholder="Enter your Email" required>
+                        <br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <a href="HomePage.html" class="btn btn-dark text-decoration-none">Continue</a>
               </div>
             </div>
-          </nav>
- 
-        </header>
+        </div>
+    </div>
+    
+   
+    <h1 class="mt-5">Most Asked FAQ</h1>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item mt-4">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Question 1
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is shown by default.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Question 2
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Question 3
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+
+  
+
+    <footer class="text-center bg-info text-white mt-auto py-2 ">
+        &copy;2025 Mobile Prepaid Recharge. All rights reserved.
+    </footer>
 </body>
 </html>
