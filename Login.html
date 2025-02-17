@@ -4,70 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobi-Comm Services Ltd.</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/main.min.css">
 </head>
 <body class="bg-secondary">
-    <header class="d-flex align-items-center justify-content-center "
-    style="background: url('Images/backgrounf.jpeg') no-repeat center center; background-size: cover; height: 100px;">
-        <h2 class="text-center p-2 text-black">
-            Mobi-Comm Services Ltd.</h2>
-        
-        </header>
-        <div class="container-fluid bg-info">
 
-            <nav class="navbar navbar-expand-sm ">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="Images/logo.jpeg" alt="Logo" style="width:50px;" class="rounded-circle">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="mynavbar">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item"><a class="nav-link text-black" href="#"><b>About Us</b></a></li>
-                            <li class="nav-item"><a class="nav-link text-black" href="#"><b>Contact</b></a></li>
-                            <li class="nav-item"><a class="nav-link text-black" href="#"><b>Help</b></a></li>
-                        </ul>
-                        <form class="d-flex">
-                            <button class="btn btn-dark text-black" type="button">Search</button>
-                            <button class="btn btn-dark text-black ms-3" type="button">Login</button>
-                        </form>
-                    </div>
+    <header class="d-flex align-items-center justify-content-center"
+        style="background: url('Images/backgrounf.jpeg') no-repeat center center; background-size: cover; height: 100px;">
+        <h2 class="text-center p-2 text-black">Mobi-Comm Services Ltd.</h2>
+    </header>
+
+  
+    <div class="container-fluid bg-info">
+
+        <nav class="navbar navbar-expand-sm ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="Images/logo.jpeg" alt="Logo" style="width:50px;" class="rounded-circle">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link text-black" href="About.html"><b>About Us</b></a></li>
+                       
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-dark text-black" type="button">Search
+                            <i class="bi bi-search mt-3" ></i>
+                        </button>
+                        <a type="button" class="btn btn-dark text-black text-decoration-none ms-3"  href="Login.html">Login</a> 
+                    </form>
                 </div>
-            </nav>
-        </div>
-
-        <div class="container ">
-            
-            <div class="d-flex">
-            <div class="container m-2 p-3">
-                <img src="Images/Mobile.jpg" class="float-start img-fluid  rounded-circle opacity-75 " alt="Image" style="height: 500px; width: 500px;">
             </div>
+        </nav>
+    </div>
+
+
+    <div class="container m-5">
+        <div class="row align-items-center">
+           
+            <div class="col-12 col-md-6 text-center">
+                <img src="Images/Mobile.jpg" class="img-fluid rounded-circle opacity-75" alt="Mobile Image">
+            </div>
+
             
-                <div class="card bg-primary bg-opacity-10 m-5 p-2" style="width: 1000px;height: max-content;">
-                    <div class="card-title text-center pt-3" style="font-size: 20px;"><b>Login to Mobi-comm </b></div>
+            <div class="col-12 col-md-6">
+                <div class="card bg-primary bg-opacity-10 m-5">
+                    <div class="card-title text-center pt-3 ">
+                        <h2>Login to Mobi-comm</h2>
+                    </div>
                     <hr>
                     <div class="card-body">
-                        <h3 class="card-text">Mobile number</h3>
-                        <br>
+                        <h4 class="card-text">Mobile number</h4><br>
                         <form>
-                            <input type="tel" class="form-control bg-dark" placeholder="Enter Mobile Number" required>
-                            <br>
-                            <a href="LoginHomePage.html" type="button" class="btn btn-dark text-decoration-none">Submit</a>
+                            <div class="mb-3">
+                                <input type="tel" id="mobile_num" class="form-control bg-dark text-black" placeholder="Enter Mobile Number" required><br>
+                            </div>
+                             <button type="button" id="submitButton" class="btn btn-dark text-decoration-none">Submit</button>
                         </form>
                     </div>
                 </div>
-                
             </div>
         </div>
+    </div>
 
-        <br>
-        <footer class="text-center bg-info text-white mt-auto py-2 ">
-            &copy;2025 Mobile Prepaid Recharge. All rights reserved.
-        </footer>
+    <script>
+          document.getElementById('submitButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            const mobileNumber = document.getElementById('mobile_num').value;
+    
+            if (mobileNumber.trim() === '') {
+                alert('Please enter a valid Mobile number.');
+            } else {
+                window.location.href = 'LoginHomePage.html';
+            }
+        });
+    </script>
+
+ 
+    <footer class="text-center bg-info text-black py-3">
+        &copy;2025 Mobile Prepaid Recharge. All rights reserved.
+    </footer>
 
 </body>
 </html>
