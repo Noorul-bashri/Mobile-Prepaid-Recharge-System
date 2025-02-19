@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/main.min.css">
+    <style>
+       
+    </style>
 </head>
-<body class="bg-secondary">
+<body class="bg-white">
     <header class="d-flex align-items-center justify-content-center "
     style="background: url('Images/backgrounf.jpeg') no-repeat center center; background-size: cover; height: 100px;">
         <h2 class="text-center p-2 text-black">
             Mobi-Comm Services Ltd.</h2>
         
         </header>
-        <div class="container-fluid bg-info">
+        <div class="container-fluid bg-black  bg-opacity-75">
 
             <nav class="navbar navbar-expand-sm ">
                 <div class="container-fluid">
@@ -28,16 +31,17 @@
                     </button>
                     <div class="collapse navbar-collapse" id="mynavbar">
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item"><a class="nav-link text-black" href="About.html"><b>About Us</b></a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="About.html"><b>About Us</b></a></li>
                             
                         </ul>
-                        <form class="d-flex align-items-center">
+                        <form class="d-flex align-items-center text-white">
                             <i class="bi bi-search fs-4 me-3"></i>
                             <div class="dropdown">
-                                <i class="bi bi-person-circle fs-4 dropdown-toggle" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <i class="bi bi-person-circle fs-4 dropdown-toggle text-white" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                                    <li><a class="dropdown-item" href="#">My Account</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li><a class="dropdown-item" href="account.html">My Account</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</a></li>
+
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="#" id="logoutLink">Sign Out</a></li>
 
@@ -50,14 +54,42 @@
             </nav>
         </div>
 
-        <ul class=" list-inline bg-info bg-opacity-50 text-start mt-1 p-2 " >
+        <div class="modal fade" id="settingsModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Settings</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" value="John Doe">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" value="johndoe@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" class="form-control" value="+1 234 567 890">
+                            </div>
+                            <button type="submit" class="btn btn-secondary text-black fw-bold">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class=" list-inline bg-secondary  text-start mt-1 p-2 " >
     
             <li class="list-inline-item me-3 fw-bold"><a href="PopularPlans.html" class="text-decoration-none text-black ">Popular Plans</a></li>
-            <li class="list-inline-item me-3 fw-bold"><a href="#" class="text-decoration-none text-black " >Validity Plans</a></li>
-            <li class="list-inline-item me-3 fw-bold"><a href="#" class="text-decoration-none text-black ">Data Plans</a></li>
-            <li class="list-inline-item me-3 fw-bold"><a href="#" class="text-decoration-none text-black">Annual Plans</a></li>
-            <li class="list-inline-item me-3 fw-bold"><a href="#" class="text-decoration-none text-black" >Entertainment Plans</a></li>
-            <li class="list-inline-item me-3 fw-bold"><a href="#" class="text-decoration-none text-black">Topup Plans</a></li>
+            <li class="list-inline-item me-3 fw-bold"><a href="ValidityPlans.html" class="text-decoration-none text-black " >Validity Plans</a></li>
+            <li class="list-inline-item me-3 fw-bold"><a href="DataPlans.html" class="text-decoration-none text-black ">Data Plans</a></li>
+            <li class="list-inline-item me-3 fw-bold"><a href="AnnualPlans.html" class="text-decoration-none text-black">Annual Plans</a></li>
+            <li class="list-inline-item me-3 fw-bold"><a href="EntertainmentPlans.html" class="text-decoration-none text-black" >Entertainment Plans</a></li>
+            <li class="list-inline-item me-3 fw-bold"><a href="TopupPlans.html" class="text-decoration-none text-black">Topup Plans</a></li>
          </ul>
         <br>
 
@@ -65,7 +97,7 @@
             <div class="row row-cols-1 row-cols-md-2 g-4" style="width: 500px; height: 200px;">
                
                 <div class="col" style="width: 500px; height: 200px;">
-                    <div class="card  bg-warning bg-opacity-25">
+                    <div class="card  bg-white">
                         <div class="card-body">
                             <h4 class="card-title ">Data Usage</h4>
                             <h4 class="card-title fw-bold"> 
@@ -73,7 +105,7 @@
                              </h4>
                             <hr>
                             <div class=" progress">
-                                <div class="progress-bar bg-success" style="width:70%"></div>
+                                <div class="progress-bar bg-info" style="width:70%"></div>
                             </div>
                             <p class="text-end">Renews in 13 hours</p>
                         </div>
@@ -81,7 +113,7 @@
                 </div>
 
                 <div class="col" style="width: 500px;height: 200px;">
-                    <div class="card  bg-warning bg-opacity-25">
+                    <div class="card  bg-white">
                         <div class="card-body">
                             <h4 class="card-title ">Current Plan</h4>
                             <h4 class="card-title fw-bold"> 
@@ -97,14 +129,7 @@
             </div>
         </div>
                
-              
-    
-        <br>    
-
-        <br>
-        <footer class="text-center bg-info text-black mt-auto py-2 fixed-bottom">
-            &copy;2025 Mobile Prepaid Recharge. All rights reserved.
-        </footer>
+  
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -119,7 +144,9 @@
                 }
             });
         </script>
-        
+
+        <br><br>
+   
 
 </body>
 </html>

@@ -1,8 +1,128 @@
-$dark:rgb(178, 164, 255);
-$secondary:rgb(255, 249, 202);
-$info :rgb(255, 222, 180);
-$primary :rgb(173, 173, 210);
-$success :rgb(106, 127, 244);;
-$warning : rgb(246, 234, 203);
+
+$secondary:rgb(228, 255, 230);
+$info :rgb(13, 135, 217);
+$primary :rgb(61, 141, 122);
+
+#mobile_num::placeholder {
+  color: white;
+  opacity: 1;
+}
+.text-justify {
+  text-align: justify;
+}
+.container {
+  max-width: 90%;
+  margin: auto;
+}
+.equal-spacing {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+}
+
+
+  /* Custom CSS for carousel */
+  .carousel-item img {
+    height: 500px; /* Default height */
+    object-fit:contain;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .carousel-item img {
+      height: 300px; /* Medium screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: 250px; /* Small screens */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .carousel-item img {
+      height: 200px; /* Extra small screens */
+    }
+  }
+
+.equal-height {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.card {
+    height: 100%;
+}
+
+
+ .animated-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover effect: Zoom in and box-shadow effect */
+    .animated-card:hover {
+        transform: scale(1.05);  /* Slight zoom-in effect */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  /* Light shadow to emphasize the zoom */
+    }
+
+    /* Optional: add smooth transition to images */
+    .animated-card img {
+        transition: transform 0.3s ease;  /* Make image smooth */
+    }
+
+    .animated-card:hover img {
+        transform: scale(1.05);  /* Slight zoom effect on image too */
+    }
+
+    .plan-card {
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .plan-card:hover {
+      transform: scale(1.05); /* Zoom in effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better effect */
+  }
+  .hover-item:hover {
+    background-color:$info;
+    color: white;
+}
+.hover-item a:hover {
+    color: white;
+}
+
+.btn-info {
+  transition: transform 0.3s ease;
+}
+
+.btn-info:hover {
+  transform: scale(1.1); /* Zoom in effect */
+}
+
+.btn-info:active {
+  transform: scale(0.9); /* Zoom out effect when clicked */
+}
+
+.hover-item {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-item:hover {
+  
+    background-color: black;
+    color: white;
+    transform: translateX(10px); /* Move the item slightly to the right */
+}
+
+.hover-item a {
+  transition: color 0.3s ease;
+}
+
+.hover-item a:hover {
+  color: white;
+}
+
+
 
 @import "./node_modules/bootstrap/scss/bootstrap";

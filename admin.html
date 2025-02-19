@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/css/main.min.css">
+  <style>
+    /* Entire page now has the same gradient background as the sidebar */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #34495e) no-repeat center center fixed;
+    }
+
+    .sidebar {
+      height: 100vh;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 12px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #1abc9c;
+    }
+
+    .card-custom {
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      background: #ffffff;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Zoom in/out on hover */
+    .card-custom:hover {
+      transform: scale(1.05);
+    }
+
+    .chart-container {
+      width: 45%;
+      margin: 10px;
+      display: inline-block;
+    }
+
+    .settings-section {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    /* Make main content white so it stands out against the gradient body */
+    main {
+      background: #fff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="d-flex align-items-center justify-content-center"
+          style="background: url('Images/backgrounf.jpeg') no-repeat center center; background-size: cover; height: 100px;">
+    <h2 class="text-center p-2 text-black">Mobi-Comm Services Ltd.</h2>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-3 col-lg-2 sidebar p-3 text-center">
+        <img src="Images/profile.png" alt="Admin Profile" class="rounded-circle mb-2" width="100">
+        <h4 class="text-white">Admin Name</h4>
+        <hr class="text-white">
+        <a href="#" onclick="showSection('subscribers')">Subscribers</a>
+        <a href="#" onclick="showSection('managePlans')">Manage Plans</a>
+        <a href="#" onclick="showSection('analytics')">Analytics</a>
+        <a href="#" onclick="showSection('settings')">Settings</a>
+      </nav>
+
+      <main class="col-md-9 col-lg-10 p-4">
+        <!-- Subscribers Section -->
+        <section id="subscribers">
+          <h5 class="bg-black bg-opacity-10 p-3">Subscribers with Expiring Plans</h5>
+          <!-- Accordion: Each subscriber's name is shown with a "View History" button -->
+          <div id="subscriberList" class="accordion"></div>
+
+          <h5 class="mt-4 bg-black bg-opacity-10 text-black p-3">Details</h5>
+          <br>
+          <div class="d-flex flex-column align-items-center">
+            <div class="card-custom text-center mb-5" style="width: 550px; border: 2px solid #000;">
+              <h5 class="bg-black bg-opacity-25 text-black m-0 p-2"><strong>Total Active Subscribers</strong></h5><br>
+              <span id="totalActiveSubscribers"></span>
+            </div>
+            <div class="card-custom text-center p-3" style="width: 550px; border: 2px solid #000;">
+              <h5 class="bg-black bg-opacity-25 text-black m-0 p-2"><strong>Most used Plan</strong></h5><br>
+              <span id="mostUsedPlan"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Manage Plans Section -->
+        <section id="managePlans" class="d-none">
+          <h3>Manage Plans</h3>
+          <input type="text" id="planName" class="form-control mb-2" placeholder="Plan Name">
+          <input type="number" id="planPrice" class="form-control mb-2" placeholder="Price">
+          <button class="btn btn-primary" onclick="addPlan()">Add Plan</button>
+          <ul id="planList" class="list-group mt-3"></ul>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="d-none">
+          <h3>Usage Analytics</h3>
+          <div class="chart-container">
+            <h4>Plan Subscribers</h4>
+            <canvas id="planChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <h4 id="planDetails">Monthly Analysis</h4>
+            <canvas id="monthlyPlanChart"></canvas>
+          </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="d-none settings-section">
+          <h3>Settings</h3>
+          <button class="btn btn-secondary text-black fw-bold mb-2" onclick="changePassword()">Change Password</button>
+          <button class="btn btn-success mb-2" onclick="exportData()">Export Data</button>
+          <button class="btn btn-danger" onclick="resetData()">Reset Data</button>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const subscribers = [
+      {
+        name: "Noorul",
+        number: "9876543210",
+        plan: "Popular Plan",
+        history: [
+          { plan: "Popular Plan", date: "2024-01-01", paymentMode: "Credit Card" },
+          { plan: "Data Plan", date: "2023-12-01", paymentMode: "UPI" },
+          { plan: "Topup Plan", date: "2023-11-01", paymentMode: "Debit Card" },
+          { plan: "Popular Plan", date: "2023-10-01", paymentMode: "Net Banking" }
+        ]
+      },
+      {
+        name: "Advaitha",
+        number: "9123456789",
+        plan: "Annual Plan",
+        history: [
+          { plan: "Data Plan", date: "2024-02-10", paymentMode: "Debit Card" },
+          { plan: "Popular Plan", date: "2023-11-10", paymentMode: "Net Banking" },
+          { plan: "Entertainment Plan", date: "2023-08-10", paymentMode: "Credit Card" },
+          { plan: "Data Plan", date: "2023-05-10", paymentMode: "UPI" }
+        ]
+      },
+      {
+        name: "Supriya",
+        number: "9123456789",
+        plan: "Annual Plan",
+        history: [
+          { plan: "Data Plan", date: "2024-02-10", paymentMode: "Debit Card" },
+          { plan: "Popular Plan", date: "2023-11-10", paymentMode: "Net Banking" },
+          { plan: "Entertainment Plan", date: "2023-08-10", paymentMode: "Credit Card" },
+          { plan: "Data Plan", date: "2023-05-10", paymentMode: "UPI" }
+        ]
+      }
+    ];
+
+    let plans = [
+      { name: "Popular Plan", price: 299 },
+      { name: "Annual Plan", price: 1999 },
+      { name: "Entertainment Plan", price: 1999 },
+      { name: "Topup Plan", price: 1999},
+      { name: "Data Plan", price: 499 }
+    ];
+
+    function showSection(sectionId) {
+      document.querySelectorAll("section").forEach(section => section.classList.add("d-none"));
+      document.getElementById(sectionId).classList.remove("d-none");
+    }
+
+    // Load subscribers into an accordion with a custom "View History" button
+    function loadSubscribers() {
+      const subscriberList = document.getElementById('subscriberList');
+      subscriberList.innerHTML = `
+        <div class="accordion" id="subscriberAccordion">
+          ${subscribers.map((subscriber, index) => `
+            <div class="accordion-item">
+              <div class="d-flex justify-content-between align-items-center p-3" id="heading${index}">
+                <span>${subscriber.name}</span>
+                <button class="btn btn-secondary text-black fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false" aria-controls="collapse${index}">
+                  View History
+                </button>
+              </div>
+              <div id="collapse${index}" class="accordion-collapse collapse" aria-labelledby="heading${index}" data-bs-parent="#subscriberAccordion">
+                <div class="accordion-body">
+                  <div class="row">
+                    ${subscriber.history.map(entry => {
+                      const planInfo = plans.find(p => p.name === entry.plan);
+                      const priceDisplay = planInfo ? planInfo.price : 'Price not available';
+                      return `
+                        <div class="col-md-6 mb-3">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">${entry.plan}</h5>
+                              <p class="card-text"><strong>Rs:</strong> ${priceDisplay}</p>
+                              <hr>
+                              <p class="card-text"><strong>Date of Payment:</strong> ${entry.date}</p>
+                              <p class="card-text"><strong>Payment Type:</strong> ${entry.paymentMode}</p>
+                            </div>
+                          </div>
+                        </div>
+                      `;
+                    }).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function updateActiveSubscribersInfo() {
+      const totalActiveSubscribers = subscribers.length;
+      document.getElementById('totalActiveSubscribers').textContent = totalActiveSubscribers;
+
+      const planCounts = {};
+      subscribers.forEach(subscriber => {
+        planCounts[subscriber.plan] = (planCounts[subscriber.plan] || 0) + 1;
+      });
+
+      let mostUsedPlan = '';
+      let maxCount = 0;
+      for (const [plan, count] of Object.entries(planCounts)) {
+        if (count > maxCount) {
+          mostUsedPlan = plan;
+          maxCount = count;
+        }
+      }
+      document.getElementById('mostUsedPlan').textContent = mostUsedPlan;
+    }
+
+    function loadChart() {
+      const ctx = document.getElementById('planChart').getContext('2d');
+      const chartPlans = ['Popular Plans', 'Validity Plans', 'Data Addon Plan', 'Annual Plans', 'Entertainment Plans', 'Top Up Plans'];
+      const subscriberData = [20, 15, 10, 30, 25, 18];
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: chartPlans,
+          datasets: [{
+            label: 'Number of Subscribers',
+            data: subscriberData,
+            backgroundColor: ['#ff6384', '#36a2eb', '#4bc0c0', '#ff9f40', '#9966ff', '#c9cbcf']
+          }]
+        },
+        options: {
+          onClick: (event, elements) => {
+            if (elements.length > 0) {
+              const index = elements[0].index;
+              showPlanDetails(chartPlans[index]);
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+    function showPlanDetails(plan) {
+      document.getElementById("planDetails").innerHTML = `<h4>${plan} Monthly Analysis</h4>`;
+      loadMonthlyPlanChart(plan);
+    }
+
+    function loadMonthlyPlanChart(plan) {
+      const ctx = document.getElementById('monthlyPlanChart').getContext('2d');
+      if (window.monthlyChart) {
+        window.monthlyChart.destroy();
+      }
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const monthlyData = Array.from({ length: 12 }, () => Math.floor(Math.random() * 100) + 10);
+      window.monthlyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: months,
+          datasets: [{
+            label: `${plan} Subscribers per Month`,
+            data: monthlyData,
+            borderColor: '#ff6384',
+            fill: false
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+    function addPlan() {
+      const planName = document.getElementById('planName').value;
+      const planPrice = document.getElementById('planPrice').value;
+      if (planName && planPrice) {
+        plans.push({ name: planName, price: parseFloat(planPrice) });
+        renderPlans();
+        document.getElementById('planName').value = '';
+        document.getElementById('planPrice').value = '';
+      } else {
+        alert('Please fill in both fields.');
+      }
+    }
+
+    function renderPlans() {
+      const planList = document.getElementById('planList');
+      planList.innerHTML = plans.map((plan, index) => `
+        <li class="list-group-item">
+          <strong>${plan.name}</strong> - $${plan.price}
+          <button class="btn btn-warning btn-sm float-end" onclick="updatePlan(${index})">Update</button>
+          <button class="btn btn-danger btn-sm float-end me-2" onclick="deletePlan(${index})">Delete</button>
+        </li>
+      `).join('');
+    }
+
+    function updatePlan(index) {
+      const plan = plans[index];
+      const newName = prompt('Enter new plan name:', plan.name);
+      const newPrice = prompt('Enter new plan price:', plan.price);
+      if (newName && newPrice) {
+        plans[index] = { name: newName, price: parseFloat(newPrice) };
+        renderPlans();
+      }
+    }
+
+    function deletePlan(index) {
+      if (confirm('Are you sure you want to delete this plan?')) {
+        plans.splice(index, 1);
+        renderPlans();
+      }
+    }
+
+    function changePassword() {
+      alert('Change Password functionality to be implemented.');
+    }
+
+    function exportData() {
+      alert('Export Data functionality to be implemented.');
+    }
+
+    function resetData() {
+      if (confirm('Are you sure you want to reset all data?')) {
+        subscribers.length = 0;
+        plans.length = 0;
+        loadSubscribers();
+        renderPlans();
+        updateActiveSubscribersInfo();
+      }
+    }
+
+    window.onload = function() {
+      loadSubscribers();
+      loadChart();
+      updateActiveSubscribersInfo();
+      renderPlans();
+    };
+  </script>
+</body>
+</html>
