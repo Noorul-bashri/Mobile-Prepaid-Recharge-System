@@ -1,0 +1,113 @@
+{
+  "annualPlans": [
+    {
+      "id": 1,
+      "name": "Elite Annual Plan",
+      "price": "3999",
+      "data": "3 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls, SMS, and 1GB rollover data",
+      "subscriptions": [
+        {
+          "type": "youtube",
+          "description": "Unlimited access to premium YouTube content."
+        },
+        {
+          "type": "netflix",
+          "description": "Stream top movies and series on Netflix."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Premium Annual Plan",
+      "price": "3499",
+      "data": "2.5 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls, free SMS, and priority customer support",
+      "subscriptions": [
+        {
+          "type": "amazon",
+          "description": "Enjoy Amazon Prime Video benefits."
+        },
+        {
+          "type": "hbo",
+          "description": "Exclusive HBO shows and movies."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Standard Annual Plan",
+      "price": "2999",
+      "data": "2 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls and SMS plus bonus data on weekends",
+      "subscriptions": [
+        {
+          "type": "netflix",
+          "description": "Standard Netflix subscription for entertainment."
+        },
+        {
+          "type": "disney",
+          "description": "Access to Disney+ family content."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Basic Annual Plan",
+      "price": "2499",
+      "data": "1.5 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited local calls and SMS with limited international roaming",
+      "subscriptions": [
+        {
+          "type": "disney",
+          "description": "Basic Disney+ streaming included."
+        },
+        {
+          "type": "amazon",
+          "description": "Access basic Amazon Prime benefits."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Economy Annual Plan",
+      "price": "1999",
+      "data": "1 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Cost-effective plan with essential benefits",
+      "subscriptions": [
+        {
+          "type": "hbo",
+          "description": "Enjoy HBO's latest content on a budget."
+        },
+        {
+          "type": "youtube",
+          "description": "Basic YouTube subscription for ad-free viewing."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Starter Annual Plan",
+      "price": "1499",
+      "data": "500 MB/Day",
+      "validity": "365 Days",
+      "benefits": "Entry-level plan with limited benefits for new users",
+      "subscriptions": [
+        {
+          "type": "youtube",
+          "description": "Starter YouTube plan with limited features."
+        },
+        {
+          "type": "netflix",
+          "description": "Limited Netflix access for new users."
+        }
+      ]
+    }
+  ]
+}
+

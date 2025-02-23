@@ -1,0 +1,293 @@
+{
+    "plans": [
+      {
+        "id": "1",
+        "category": "topTrending",
+        "name": "Popular Plan 1",
+        "price": "Rs.2999",
+        "data": "2.5 GB/Day",
+        "validity": "365 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "2",
+        "category": "topTrending",
+        "name": "Popular Plan 2",
+        "price": "Rs.2799",
+        "data": "2 GB/Day",
+        "validity": "365 Days",
+        "benefits": "Unlimited calls and bonus data on weekends"
+      },
+      {
+        "id": "3",
+        "category": "topTrending",
+        "name": "Popular Plan 3",
+        "price": "Rs.2599",
+        "data": "2.5 GB/Day",
+        "validity": "365 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "4",
+        "category": "topTrending",
+        "name": "Popular Plan 4",
+        "price": "Rs.2499",
+        "data": "3 GB/Day",
+        "validity": "365 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "5",
+        "category": "recommended",
+        "name": "Recommended Plan 1",
+        "price": "Rs.1499",
+        "data": "2 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "6",
+        "category": "recommended",
+        "name": "Recommended Plan 2",
+        "price": "Rs.1399",
+        "data": "1.5 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "7",
+        "category": "recommended",
+        "name": "Recommended Plan 3",
+        "price": "Rs.1599",
+        "data": "2 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS with bonus data"
+      },
+      {
+        "id": "8",
+        "category": "recommended",
+        "name": "Recommended Plan 4",
+        "price": "Rs.1699",
+        "data": "2.5 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "9",
+        "category": "5g",
+        "name": "5G Plan 1",
+        "price": "Rs.999",
+        "data": "3 GB/Day",
+        "validity": "30 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "10",
+        "category": "5g",
+        "name": "5G Plan 2",
+        "price": "Rs.1099",
+        "data": "3.5 GB/Day",
+        "validity": "30 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "11",
+        "category": "5g",
+        "name": "5G Plan 3",
+        "price": "Rs.1199",
+        "data": "4 GB/Day",
+        "validity": "30 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "12",
+        "category": "5g",
+        "name": "5G Plan 4",
+        "price": "Rs.1299",
+        "data": "4 GB/Day",
+        "validity": "30 Days",
+        "benefits": "Unlimited calls and free SMS plus weekend bonus"
+      },
+      {
+        "id": "13",
+        "category": "1gb",
+        "name": "1GB Plan 1",
+        "price": "Rs.499",
+        "data": "1 GB/Day",
+        "validity": "28 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "14",
+        "category": "1gb",
+        "name": "1GB Plan 2",
+        "price": "Rs.549",
+        "data": "1 GB/Day",
+        "validity": "28 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "15",
+        "category": "1gb",
+        "name": "1GB Plan 3",
+        "price": "Rs.479",
+        "data": "1 GB/Day",
+        "validity": "28 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "16",
+        "category": "1gb",
+        "name": "1GB Plan 4",
+        "price": "Rs.519",
+        "data": "1 GB/Day",
+        "validity": "28 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "17",
+        "category": "1.5gb",
+        "name": "1.5GB Plan 1",
+        "price": "Rs.799",
+        "data": "1.5 GB/Day",
+        "validity": "56 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "18",
+        "category": "1.5gb",
+        "name": "1.5GB Plan 2",
+        "price": "Rs.849",
+        "data": "1.5 GB/Day",
+        "validity": "56 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "19",
+        "category": "1.5gb",
+        "name": "1.5GB Plan 3",
+        "price": "Rs.799",
+        "data": "1.5 GB/Day",
+        "validity": "56 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "20",
+        "category": "1.5gb",
+        "name": "1.5GB Plan 4",
+        "price": "Rs.879",
+        "data": "1.5 GB/Day",
+        "validity": "56 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "21",
+        "category": "2gb",
+        "name": "2GB Plan 1",
+        "price": "Rs.1099",
+        "data": "2 GB/Day",
+        "validity": "84 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "22",
+        "category": "2gb",
+        "name": "2GB Plan 2",
+        "price": "Rs.1149",
+        "data": "2 GB/Day",
+        "validity": "84 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "23",
+        "category": "2gb",
+        "name": "2GB Plan 3",
+        "price": "Rs.1099",
+        "data": "2 GB/Day",
+        "validity": "84 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "24",
+        "category": "2gb",
+        "name": "2GB Plan 4",
+        "price": "Rs.1199",
+        "data": "2 GB/Day",
+        "validity": "84 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "25",
+        "category": "2.5gb",
+        "name": "2.5GB Plan 1",
+        "price": "Rs.1299",
+        "data": "2.5 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "26",
+        "category": "2.5gb",
+        "name": "2.5GB Plan 2",
+        "price": "Rs.1349",
+        "data": "2.5 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "27",
+        "category": "2.5gb",
+        "name": "2.5GB Plan 3",
+        "price": "Rs.1299",
+        "data": "2.5 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "28",
+        "category": "2.5gb",
+        "name": "2.5GB Plan 4",
+        "price": "Rs.1399",
+        "data": "2.5 GB/Day",
+        "validity": "90 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "29",
+        "category": "3gb",
+        "name": "3GB Plan 1",
+        "price": "Rs.1599",
+        "data": "3 GB/Day",
+        "validity": "120 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "30",
+        "category": "3gb",
+        "name": "3GB Plan 2",
+        "price": "Rs.1649",
+        "data": "3 GB/Day",
+        "validity": "120 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "31",
+        "category": "3gb",
+        "name": "3GB Plan 3",
+        "price": "Rs.1599",
+        "data": "3 GB/Day",
+        "validity": "120 Days",
+        "benefits": "Unlimited calls and free SMS"
+      },
+      {
+        "id": "32",
+        "category": "3gb",
+        "name": "3GB Plan 4",
+        "price": "Rs.1699",
+        "data": "3 GB/Day",
+        "validity": "120 Days",
+        "benefits": "Unlimited calls and free SMS"
+      }
+    ]
+  }
+  

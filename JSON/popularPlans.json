@@ -1,0 +1,128 @@
+{
+  "plans": [
+    {
+      "id": "plan1",
+      "name": "Popular Plan",
+      "price": "Rs.2999",
+      "data": "2.5 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls and free SMS",
+      "subscriptions": [
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "disney", "description": "Disney+ subscription with family-friendly content" },
+        { "type": "hbo", "description": "HBO subscription with blockbuster movies" }
+      ]
+    },
+    {
+      "id": "plan2",
+      "name": "Popular Plan",
+      "price": "Rs.1999",
+      "data": "1.5 GB/Day",
+      "validity": "180 Days",
+      "benefits": "Unlimited calls and 100 SMS",
+      "subscriptions": [
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "disney", "description": "Disney+ subscription with family-friendly content" }
+      ]
+    },
+    {
+      "id": "plan3",
+      "name": "Popular Plan",
+      "price": "Rs.2499",
+      "data": "2 GB/Day",
+      "validity": "270 Days",
+      "benefits": "Unlimited calls and 50 SMS",
+      "subscriptions": [
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "hbo", "description": "HBO subscription with blockbuster movies" }
+      ]
+    },
+    {
+      "id": "plan4",
+      "name": "Popular Plan",
+      "price": "Rs.3499",
+      "data": "3 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls and 150 SMS",
+      "subscriptions": [
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "disney", "description": "Disney+ subscription with family-friendly content" }
+      ]
+    },
+    {
+      "id": "plan5",
+      "name": "Popular Plan",
+      "price": "Rs.1599",
+      "data": "1 GB/Day",
+      "validity": "120 Days",
+      "benefits": "Unlimited calls and 50 SMS",
+      "subscriptions": [
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "hbo", "description": "HBO subscription with blockbuster movies" }
+      ]
+    },
+    {
+      "id": "plan6",
+      "name": "Popular Plan",
+      "price": "Rs.2799",
+      "data": "2.5 GB/Day",
+      "validity": "300 Days",
+      "benefits": "Unlimited calls, free SMS and 1GB data rollover",
+      "subscriptions": [
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "disney", "description": "Disney+ subscription with family-friendly content" },
+        { "type": "hbo", "description": "HBO subscription with blockbuster movies" }
+      ]
+    },
+    {
+      "id": "plan7",
+      "name": "Popular Plan",
+      "price": "Rs.3199",
+      "data": "3 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls and free SMS plus additional data on weekends",
+      "subscriptions": [
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "disney", "description": "Disney+ subscription with family-friendly content" }
+      ]
+    },
+    {
+      "id": "plan8",
+      "name": "Popular Plan",
+      "price": "Rs.2299",
+      "data": "2 GB/Day",
+      "validity": "240 Days",
+      "benefits": "Unlimited calls and 75 SMS",
+      "subscriptions": [
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "hbo", "description": "HBO subscription with blockbuster movies" }
+      ]
+    },
+    {
+      "id": "plan9",
+      "name": "Popular Plan",
+      "price": "Rs.1899",
+      "data": "1.5 GB/Day",
+      "validity": "150 Days",
+      "benefits": "Unlimited calls and 50 SMS",
+      "subscriptions": [
+        { "type": "youtube", "description": "Access to YouTube Premium with ad-free viewing" },
+        { "type": "netflix", "description": "Netflix subscription with exclusive series" },
+        { "type": "amazon", "description": "Amazon Prime benefits including free shipping" },
+        { "type": "disney", "description": "Disney+ subscription with family-friendly content" }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 
-$secondary:rgb(228, 255, 230);
+$secondary: rgb(193, 193, 123);
 $info :rgb(13, 135, 217);
 $primary :rgb(61, 141, 122);
+
+
 
 #mobile_num::placeholder {
   color: white;
@@ -19,6 +21,7 @@ $primary :rgb(61, 141, 122);
   margin-right: auto;
   max-width: 90%;
 }
+
 
 
   /* Custom CSS for carousel */
@@ -122,6 +125,127 @@ $primary :rgb(61, 141, 122);
 .hover-item a:hover {
   color: white;
 }
+
+/* Card Styling */
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #004a8f; /* Dark blue color */
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.badge {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-secondary {
+  background-color: #2d2d2d;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #1a1a1a;
+}
+/* Footer Top Section */
+footer .footer-top {
+  background: linear-gradient(45deg, #000000, #333333);
+  color: white;
+  padding: 40px 0;
+}
+
+footer .footer-top h5 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+footer .footer-top ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer .footer-top ul li {
+  margin-bottom: 0.5rem;
+}
+
+footer .footer-top ul li a {
+  color: #ffcc00;;
+  text-decoration: none;
+}
+
+footer .footer-top ul li a:hover {
+  color: #ffcc00;
+}
+
+/* Social Media Icon Style */
+.icon-yellow {
+  color: #ffcc00;
+}
+
+/* Footer Bottom Section */
+footer .footer-bottom {
+  background-color: #222222;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+/* Newsletter Form Styles */
+.newsletter-form input[type="email"] {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.newsletter-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e8d792;
+  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Subscription Message Styles */
+.subscription-message {
+  display: none;
+  color:white;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Extra Content Styles */
+.newsletter-extra {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
 
 
 

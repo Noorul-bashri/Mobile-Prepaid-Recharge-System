@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Page</title>
+
+  <!-- Bootstrap CSS & Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+  />
+
+  <!-- Bootstrap JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.min.css" />
+  <style>
+    /* Container Wrapper */
+    .content-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    /* Banner */
+    header.banner {
+      position: relative;
+      background: url('../Images/backgrounf.jpeg') no-repeat center center;
+      background-size: cover;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header.banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header.banner .banner-content {
+      position: relative;
+      z-index: 2;
+    }
+    header.banner .banner-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      color: white;
+    }
+    header.banner .banner-content p {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    /* Navbar & Search */
+    #searchBar {
+      position: relative;
+      border: 2px solid #010101;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+    #searchBar .input-group > * {
+      height: 40px;
+    }
+    #searchBar input[type="text"] {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #000;
+      padding-left: 1rem;
+    }
+    #searchBar .input-group-text {
+      background: transparent;
+      border: none;
+      color: #0b0b0b;
+      cursor: pointer;
+    }
+    /* Plan List Bar */
+    .plan-list {
+      background: linear-gradient(135deg, #f6f9fc, #e9eff5);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin: 1rem 0;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .plan-list li {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+    .plan-link {
+      color: #2d2d2d;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+    .plan-link:hover {
+      background: #2d2d2d;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    .plan-link.active {
+      background: #2d2d2d;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+    /* Button Styles */
+    .btn-famera {
+      background: linear-gradient(to bottom right, #fff, #ecf8ff);
+      border: 2px solid rgb(230, 228, 255);
+      color: #004a8f;
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      box-shadow: 0 4px 8px rgba(185, 196, 212, 0.3);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-famera:hover {
+      font-weight: 700;
+      transform: translateY(-2px);
+      background: #e8d792;
+      color: #002f5d;
+      box-shadow: 0 8px 12px rgba(138, 186, 255, 0.4);
+    }
+    .btn-uiforms {
+      background: #fff;
+      border: 2px solid #2d2d2d;
+      color: #2d2d2d;
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      box-shadow: 0 4px 6px rgba(45, 45, 45, 0.2);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    .btn-uiforms:hover {
+      background: #2d2d2d;
+      color: #fff;
+      box-shadow: 0 6px 8px rgba(45, 45, 45, 0.3);
+    }
+    /* Plan Card */
+    .plan-card {
+      border-radius: 12px;
+      width: 100%;
+    }
+    .card.h-100 {
+      display: flex;
+      flex-direction: column;
+    }
+    .subscription-details {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .subscription-icons span,
+    .sub-icon {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+      vertical-align: middle;
+      display: inline-flex;
+    }
+    /* Sidebar (Aside) */
+    .sidebar {
+      position: sticky;
+      top: 20px;
+    }
+    /* Ensure all cards in the grid have equal height and width */
+    .row.row-cols-1.row-cols-md-2.g-4 > .col {
+      display: flex;
+      align-items: stretch;
+    }
+    .row.row-cols-1.row-cols-md-2.g-4 > .col > .card-container {
+      flex: 1 1 auto;
+    }
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 767.98px) {
+      header.banner .banner-content h1 {
+        font-size: 2rem;
+      }
+      header.banner .banner-content p {
+        font-size: 1rem;
+      }
+      header.banner {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Top Header Banner -->
+  <header class="banner">
+    <div class="content-container banner-content">
+      <h1>Mobi-Comm Service Pvt Ltd</h1>
+      <p>Empowering the future of digital communication with seamless connectivity and innovative solutions.</p>
+    </div>
+  </header>
+
+  <!-- Navbar with Search -->
+  <div class="container-fluid bg-opacity-75 position-relative">
+    <nav class="navbar navbar-expand-sm">
+      <div class="container-fluid content-container">
+        <a class="navbar-brand" href="#">
+          <img src="../Images/logo.jpeg" alt="Logo" style="width:50px;" class="rounded-circle" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link text-black" href="About.html"><b>About Us</b></a>
+            </li>
+          </ul>
+          <form class="d-flex align-items-center position-relative" id="searchForm">
+            <div id="searchBar">
+              <div class="input-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search " />
+                <span class="input-group-text" id="searchIcon">
+                  <i class="bi bi-search"></i>
+                </span>
+              </div>
+            </div>
+            <a type="button" class="btn bg-black text-white text-decoration-none" href="Login.html">Login</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Plan List Bar -->
+  <div class="content-container" id="planlist">
+    <ul class="plan-list list-inline">
+      <li class="list-inline-item"><a href="PopularPlans.html" class="plan-link">Popular Plans</a></li>
+      <li class="list-inline-item"><a href="ValidityPlans.html" class="plan-link">Validity Plans</a></li>
+      <li class="list-inline-item"><a href="DataPlans.html" class="plan-link">Data Plans</a></li>
+      <li class="list-inline-item"><a href="AnnualPlans.html" class="plan-link">Annual Plans</a></li>
+      <li class="list-inline-item"><a href="EntertainmentPlans.html" class="plan-link">Entertainment Plans</a></li>
+      <li class="list-inline-item"><a href="TopupPlans.html" class="plan-link">Topup Plans</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Layout: Sidebar (Aside) and Main Content -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar (Aside) -->
+      <div class="col-md-3">
+        <aside class="sidebar">
+          <div class="card bg-white">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#headingTopTrending" class="text-decoration-none text-black">Top Trending Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#headingRecommended" class="text-decoration-none text-black">Recommended Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#heading5g" class="text-decoration-none text-black">Best 5G Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#heading1gb" class="text-decoration-none text-black">1 GB/Day Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#heading15gb" class="text-decoration-none text-black">1.5 GB/Day Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#heading2gb" class="text-decoration-none text-black">2 GB/Day Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#heading25gb" class="text-decoration-none text-black">2.5 GB/Day Plans</a>
+              </li>
+              <li class="list-group-item bg-black bg-opacity-10 hover-item">
+                <a href="#heading3gb" class="text-decoration-none text-black">3 GB/Day Plans</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="col-md-9">
+        <!-- Search Results Container (hidden by default) -->
+        <div class="content-container" id="searchResultsContainer" style="display:none;">
+          <!-- 2-column grid for search results -->
+          <div class="row row-cols-1 row-cols-md-2 g-4" id="planCardsContainer"></div>
+          <div id="noResultsMessage" class="text-center mt-3">No plans found. Please choose another filter.</div>
+        </div>
+
+        <!-- Grouped Sections Container (displayed when no search query) -->
+        <div class="content-container" id="groupedSectionsContainer">
+          <h4 id="headingTopTrending" class="mt-4">Top Trending Plans</h4>
+          <div id="topTrendingPlans"></div>
+
+          <h4 id="headingRecommended" class="mt-4">Recommended Plans</h4>
+          <div id="recommendedPlans"></div>
+
+          <h4 id="heading5g" class="mt-4">Best 5G Plans</h4>
+          <div id="fiveGPlans"></div>
+
+          <h4 id="heading1gb" class="mt-4">1 GB/Day Plans</h4>
+          <div id="oneGbPlans"></div>
+
+          <h4 id="heading15gb" class="mt-4">1.5 GB/Day Plans</h4>
+          <div id="onePointFiveGbPlans"></div>
+
+          <h4 id="heading2gb" class="mt-4">2 GB/Day Plans</h4>
+          <div id="twoGbPlans"></div>
+
+          <h4 id="heading25gb" class="mt-4">2.5 GB/Day Plans</h4>
+          <div id="twoPointFiveGbPlans"></div>
+
+          <h4 id="heading3gb" class="mt-4">3 GB/Day Plans</h4>
+          <div id="threeGbPlans"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br> <br>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="content-container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Mobi-Comm Service Pvt Ltd</h5>
+            <p>Connecting People, Anytime, Anywhere.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="About.html">About Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Connect With Us</h5>
+            <p>Follow us on social media for the latest updates.</p>
+            <a href="#" class="me-2"><i class="bi bi-facebook icon-yellow"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-twitter icon-yellow"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-instagram icon-yellow"></i></a>
+            <a href="#"><i class="bi bi-linkedin icon-yellow"></i></a>
+          </div>
+        </div>
+        <!-- Newsletter Signup Section -->
+        <div class="newsletter-section mt-4">
+          <h5>Subscribe to Our Newsletter</h5>
+          <p>Get the latest updates and exclusive offers delivered straight to your inbox.</p>
+          <form action="#" class="newsletter-form" onsubmit="handleSubscription(event)">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-famera">Subscribe</button>
+          </form>
+          <div id="subscription-message" class="subscription-message" style="display:none;">
+            Subscribed! You will receive email notifications with our latest news and updates.
+          </div>
+          <div class="newsletter-extra mt-2">
+            <p>
+              We value your privacy and promise not to spam your inbox. As a subscriber, you’ll get exclusive insights, early access to offers, and behind-the-scenes updates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="content-container">
+        <p class="mb-0">&copy; 2025 Mobi-Comm Service Pvt Ltd. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Viewing Plan Details -->
+  <div class="modal fade" id="myModalview" tabindex="-1" aria-labelledby="planDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="planDetailsModalLabel">Plan Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Price:</strong> <span id="planPrice"></span></p>
+          <p><strong>Data:</strong> <span id="planData"></span></p>
+          <p><strong>Validity:</strong> <span id="planValidity"></span></p>
+          <p><strong>Benefits:</strong> <span id="planBenefits"></span></p>
+          <p><strong>Subscriptions:</strong></p>
+          <div id="planSubscriptions"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-uiforms" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-uiforms open-recharge-from-view">Recharge</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Recharge -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Recharge</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="rechargeForm">
+            <input type="tel" id="mobileNumber" class="form-control" placeholder="Enter Mobile Number" required />
+            <span id="error-msg" class="text-danger mt-1"></span>
+            <br />
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="PaymentPage.html" id="continue-btn" class="btn btn-uiforms text-decoration-none" disabled>Continue</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Global variables to store all plans data and grouped plans
+    let allPlansData = [];
+    const groupedPlans = {
+      topTrending: [],
+      recommended: [],
+      "5g": [],
+      "1gb": [],
+      "1.5gb": [],
+      "2gb": [],
+      "2.5gb": [],
+      "3gb": []
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Allowed Mobi-Comm numbers
+      let allowedNumbers = [];
+      fetch("/JSON/userNumber.json")
+        .then(response => response.json())
+        .then(data => {
+          allowedNumbers = data.users.map(user => user.phone);
+        })
+        .catch(error => console.error("Error fetching allowed numbers:", error));
+
+      // JSON files to fetch
+      const jsonFiles = [
+        "/JSON/popularPlans.json",
+        "/JSON/validityPlans.json",
+        "/JSON/plans.json",
+        "/JSON/AnnualPlans.json",
+        "/JSON/entertainmentPlans.json"
+      ];
+
+      // Fetch and combine
+      Promise.all(
+        jsonFiles.map(file =>
+          fetch(file)
+            .then(response => response.json())
+            .then(data => {
+              if (data.plans) return data.plans;
+              else if (data.annualPlans) return data.annualPlans;
+              else return data; 
+            })
+        )
+      )
+      .then(results => {
+        allPlansData = results.flat();
+        const validDailyValues = [1, 1.5, 2, 2.5, 3];
+
+        // Filter to keep only daily data plans
+        const filteredPlans = allPlansData.filter(plan => {
+          if (!plan.data || !plan.data.includes("/Day")) return false;
+          let value = parseFloat(plan.data);
+          if (plan.data.toLowerCase().includes("mb")) {
+            value = value / 1024;
+          }
+          return validDailyValues.includes(value);
+        });
+
+        // Group the daily plans
+        filteredPlans.forEach(plan => {
+          let dataValue = parseFloat(plan.data);
+          if (plan.data.toLowerCase().includes("mb")) {
+            dataValue = dataValue / 1024;
+          }
+          if (dataValue === 1) groupedPlans["1gb"].push(plan);
+          else if (dataValue === 1.5) groupedPlans["1.5gb"].push(plan);
+          else if (dataValue === 2) groupedPlans["2gb"].push(plan);
+          else if (dataValue === 2.5) groupedPlans["2.5gb"].push(plan);
+          else if (dataValue === 3) groupedPlans["3gb"].push(plan);
+
+          if ((plan.category && plan.category.toLowerCase() === "toptrending") ||
+              (plan.name && plan.name.toLowerCase().includes("popular plan"))) {
+            groupedPlans.topTrending.push(plan);
+          }
+          if ((plan.category && plan.category.toLowerCase() === "recommended") ||
+              (plan.name && plan.name.toLowerCase().includes("validity plan"))) {
+            groupedPlans.recommended.push(plan);
+          }
+          if (dataValue === 3) {
+            groupedPlans["5g"].push(plan);
+          }
+        });
+        renderGroupedSections();
+      })
+      .catch(error => console.error("Error fetching plans:", error));
+
+      // RENDERING SECTIONS
+      function renderGroupedSections() {
+        document.getElementById("groupedSectionsContainer").style.display = "block";
+        document.getElementById("searchResultsContainer").style.display = "none";
+
+        renderInitialSection("topTrending", groupedPlans.topTrending, "topTrendingPlans");
+        renderInitialSection("recommended", groupedPlans.recommended, "recommendedPlans");
+        renderInitialSection("5g", groupedPlans["5g"], "fiveGPlans");
+        renderInitialSection("1gb", groupedPlans["1gb"], "oneGbPlans");
+        renderInitialSection("1.5gb", groupedPlans["1.5gb"], "onePointFiveGbPlans");
+        renderInitialSection("2gb", groupedPlans["2gb"], "twoGbPlans");
+        renderInitialSection("2.5gb", groupedPlans["2.5gb"], "twoPointFiveGbPlans");
+        renderInitialSection("3gb", groupedPlans["3gb"], "threeGbPlans");
+      }
+
+      // Create the HTML for a single plan card
+      function createCard(plan) {
+        const subscriptionIcons = {
+          youtube: '<span class="sub-icon" title="YouTube" style="color: #FF0000;"><i class="bi bi-youtube"></i></span>',
+          netflix: '<span class="sub-icon" title="Netflix" style="color: #E50914;"><i class="bi bi-tv"></i></span>',
+          amazon: '<span class="sub-icon" title="Amazon" style="color: #FF9900;"><i class="bi bi-bag"></i></span>',
+          disney: '<span class="sub-icon" title="Disney+" style="color: #113CCF;"><i class="bi bi-collection-play"></i></span>',
+          hbo: '<span class="sub-icon" title="HBO" style="color: #C8102E;"><i class="bi bi-film"></i></span>'
+        };
+        return `
+          <div class="card-container">
+            <div class="card h-100 bg-white plan-card">
+              <div class="card-body d-flex flex-column">
+                <h6>${plan.name}</h6>
+                <h4 class="fw-bold">
+                  <span class="badge bg-black text-white">${plan.price}</span>
+                </h4>
+                <hr>
+                <div class="text-start flex-grow-1">
+                  <p><strong>Data:</strong> ${plan.data}</p>
+                  <p><strong>Validity:</strong> ${plan.validity}</p>
+                  <p class="subscription-details">
+                    <strong>Subscription:</strong>
+                    ${
+                      (plan.subscriptions
+                        && plan.subscriptions.map(sub => subscriptionIcons[sub.type] || '').join(' '))
+                      || "N/A"
+                    }
+                  </p>
+                </div>
+                <div class="mt-auto d-flex justify-content-between">
+                  <button
+                    type="button"
+                    class="btn btn-famera view-details"
+                    data-plan-index="${allPlansData.indexOf(plan)}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModalview"
+                  >
+                    View Details
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-uiforms recharge-btn"
+                    data-plan-index="${allPlansData.indexOf(plan)}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModal"
+                  >
+                    Recharge
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      /**
+       * Renders only the first 2 plans. 
+       * If there are more than 2 plans, place a "View More" button OUTSIDE the second card at the bottom of that column.
+       */
+      function renderInitialSection(groupKey, planArray, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        if (!planArray || planArray.length === 0) {
+          container.innerHTML = "<p>No plans available.</p>";
+          return;
+        }
+        let html = `<div class="row row-cols-1 row-cols-md-2 g-4">`;
+        // 1st column (1st plan)
+        if (planArray[0]) {
+          html += `
+            <div class="col d-flex align-items-stretch">
+              ${createCard(planArray[0])}
+            </div>
+          `;
+        }
+        // 2nd column (2nd plan, plus "View More" if >2 total)
+        if (planArray[1]) {
+          html += `
+            <div class="col d-flex flex-column">
+              <div class="flex-grow-1">
+                ${createCard(planArray[1])}
+              </div>
+          `;
+          if (planArray.length > 2) {
+            html += `
+              <div class="mt-2 text-end">
+                <button 
+                  class="btn btn-famera toggle-section"
+                  data-group="${groupKey}"
+                  data-expanded="false"
+                >
+                  View More
+                </button>
+              </div>
+            `;
+          }
+          html += `</div>`;
+        }
+        html += `</div>`;
+        container.innerHTML = html;
+        attachViewDetailsListeners();
+      }
+
+      /**
+       * Renders ALL plans in a 2-column layout. 
+       * The "View Less" button goes to the bottom of the LAST plan’s column.
+       */
+      function renderFullSection(groupKey, planArray, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        if (!planArray || planArray.length === 0) {
+          container.innerHTML = "<p>No plans available.</p>";
+          return;
+        }
+        let fullHTML = `<div class="row row-cols-1 row-cols-md-2 g-4">`;
+        planArray.forEach((plan, i) => {
+          const isLastPlan = (i === planArray.length - 1);
+          if (isLastPlan) {
+            fullHTML += `
+              <div class="col d-flex flex-column">
+                <div class="flex-grow-1">
+                  ${createCard(plan)}
+                </div>
+                <div class="mt-2 text-end">
+                  <button 
+                    class="btn btn-famera toggle-section"
+                    data-group="${groupKey}"
+                    data-expanded="true"
+                  >
+                    View Less
+                  </button>
+                </div>
+              </div>
+            `;
+          } else {
+            fullHTML += `
+              <div class="col d-flex align-items-stretch">
+                ${createCard(plan)}
+              </div>
+            `;
+          }
+        });
+        fullHTML += `</div>`;
+        container.innerHTML = fullHTML;
+        attachViewDetailsListeners();
+      }
+
+      // Toggle logic for expanding/collapsing sections
+      document.addEventListener("click", function(e) {
+        if (e.target.classList.contains("toggle-section")) {
+          const groupKey = e.target.getAttribute("data-group");
+          const expanded = e.target.getAttribute("data-expanded");
+          const containerIdMap = {
+            topTrending: "topTrendingPlans",
+            recommended: "recommendedPlans",
+            "5g": "fiveGPlans",
+            "1gb": "oneGbPlans",
+            "1.5gb": "onePointFiveGbPlans",
+            "2gb": "twoGbPlans",
+            "2.5gb": "twoPointFiveGbPlans",
+            "3gb": "threeGbPlans"
+          };
+          const containerId = containerIdMap[groupKey];
+          if (expanded === "false") {
+            renderFullSection(groupKey, groupedPlans[groupKey], containerId);
+          } else {
+            renderInitialSection(groupKey, groupedPlans[groupKey], containerId);
+          }
+        }
+      });
+
+      // Attach "View Details" event to each card's button
+      function attachViewDetailsListeners() {
+        document.querySelectorAll(".view-details").forEach(button => {
+          button.addEventListener("click", function() {
+            const planIndex = this.getAttribute("data-plan-index");
+            const plan = allPlansData[planIndex];
+            document.getElementById("planDetailsModalLabel").textContent = plan.name;
+            document.getElementById("planPrice").textContent = plan.price;
+            document.getElementById("planData").textContent = plan.data;
+            document.getElementById("planValidity").textContent = plan.validity;
+            document.getElementById("planBenefits").textContent = plan.benefits || plan.additionalBenefits || "";
+            const subs = plan.subscriptions || [];
+            const subscriptionIcons = {
+              youtube: '<span class="sub-icon" title="YouTube" style="color: #FF0000;"><i class="bi bi-youtube"></i></span>',
+              netflix: '<span class="sub-icon" title="Netflix" style="color: #E50914;"><i class="bi bi-tv"></i></span>',
+              amazon: '<span class="sub-icon" title="Amazon" style="color: #FF9900;"><i class="bi bi-bag"></i></span>',
+              disney: '<span class="sub-icon" title="Disney+" style="color: #113CCF;"><i class="bi bi-collection-play"></i></span>',
+              hbo: '<span class="sub-icon" title="HBO" style="color: #C8102E;"><i class="bi bi-film"></i></span>'
+            };
+            const detailedSubsHTML = subs.map(sub => `
+              <div style="margin-bottom: 0.3rem;">
+                ${subscriptionIcons[sub.type] || ''} <span>${sub.description}</span>
+              </div>
+            `).join('');
+            document.getElementById("planSubscriptions").innerHTML = detailedSubsHTML || "N/A";
+          });
+        });
+      }
+
+      // Search functionality
+      const searchInput = document.getElementById("searchInput");
+      const searchIcon = document.getElementById("searchIcon");
+      const searchForm = document.getElementById("searchForm");
+      function filterAndScroll() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query === "") {
+          document.getElementById("groupedSectionsContainer").style.display = "block";
+          document.getElementById("searchResultsContainer").style.display = "none";
+        } else {
+          const filteredPlans = allPlansData.filter(plan => {
+            return (
+              plan.name.toLowerCase().includes(query) ||
+              plan.price.toLowerCase().includes(query) ||
+              plan.data.toLowerCase().includes(query) ||
+              plan.validity.toLowerCase().includes(query) ||
+              (plan.benefits && plan.benefits.toLowerCase().includes(query)) ||
+              (plan.subscriptions && plan.subscriptions.map(s => s.type).join(" ").toLowerCase().includes(query))
+            );
+          });
+          renderSearchResults(filteredPlans);
+        }
+        document.getElementById("planCardsContainer")?.scrollIntoView({ behavior: "smooth" });
+      }
+      searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        filterAndScroll();
+      });
+      searchIcon.addEventListener("click", function () {
+        filterAndScroll();
+      });
+
+      // Render search results in a 2-column layout
+      function renderSearchResults(plans) {
+        document.getElementById("groupedSectionsContainer").style.display = "none";
+        const container = document.getElementById("planCardsContainer");
+        container.innerHTML = "";
+        if (plans.length === 0) {
+          document.getElementById("noResultsMessage").style.display = "block";
+        } else {
+          document.getElementById("noResultsMessage").style.display = "none";
+          plans.forEach(plan => {
+            container.innerHTML += `<div class="col d-flex align-items-stretch">` + createCard(plan) + `</div>`;
+          });
+        }
+        document.getElementById("searchResultsContainer").style.display = "block";
+        attachViewDetailsListeners();
+      }
+
+      // Recharge modal: Validate mobile number
+      const mobileInputField = document.getElementById("mobileNumber");
+      const errorMsg = document.getElementById("error-msg");
+      const continueBtn = document.getElementById("continue-btn");
+      mobileInputField.addEventListener("input", function () {
+        if (/^\d{10}$/.test(mobileInputField.value)) {
+          errorMsg.textContent = "";
+          continueBtn.removeAttribute("disabled");
+        } else {
+          errorMsg.textContent = "Please enter a valid 10-digit number";
+          continueBtn.setAttribute("disabled", "true");
+        }
+      });
+      continueBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        const mobileNumber = mobileInputField.value.trim();
+        fetch("/JSON/userNumber.json")
+          .then(response => response.json())
+          .then(data => {
+            const users = data.users;
+            const isMobiCommNumber = users.some(user => user.phone === mobileNumber);
+            if (isMobiCommNumber) {
+              window.location.href = "PaymentPage.html";
+            } else {
+              errorMsg.textContent = "Not a Mobi-Comm number";
+            }
+          })
+          .catch(error => {
+            console.error("Error fetching user data:", error);
+            errorMsg.textContent = "An error occurred. Please try again.";
+          });
+      });
+    });
+
+    function handleSubscription(event) {
+      event.preventDefault();
+      document.getElementById('subscription-message').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

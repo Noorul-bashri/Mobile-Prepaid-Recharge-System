@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Entertainment Plan",
+    "price": "Rs. 499",
+    "data": "1.5 GB/Day",
+    "validity": "28 Days",
+    "additionalBenefits": "Unlimited calls and free SMS.",
+    "subscriptions": [
+      { "type": "netflix", "description": "1 Month Free" },
+      { "type": "amazon", "description": "1 Month Free" },
+      { "type": "hbo", "description": "3 Months Free" }
+    ]
+  },
+  {
+    "name": "Entertainment Plan",
+    "price": "Rs. 799",
+    "data": "2 GB/Day",
+    "validity": "56 Days",
+    "additionalBenefits": "Free incoming calls.",
+    "subscriptions": [
+      { "type": "disney", "description": "3 Months Free" },
+      { "type": "youtube", "description": "1 Month Free" }
+    ]
+  },
+  {
+    "name": "Entertainment Plan",
+    "price": "Rs. 999",
+    "data": "3 GB/Day",
+    "validity": "84 Days",
+    "additionalBenefits": "Unlimited texts.",
+    "subscriptions": [
+      { "type": "netflix", "description": "3 Months Free" },
+      { "type": "amazon", "description": "3 Months Free" },
+      { "type": "hbo", "description": "6 Months Free" }
+    ]
+  },
+  {
+    "name": "Entertainment Plan",
+    "price": "Rs. 1299",
+    "data": "5 GB/Day",
+    "validity": "90 Days",
+    "additionalBenefits": "Unlimited calls and texts.",
+    "subscriptions": [
+      { "type": "netflix", "description": "6 Months Free" },
+      { "type": "amazon", "description": "6 Months Free" },
+      { "type": "hbo", "description": "12 Months Free" }
+    ]
+  },
+  {
+    "name": "Entertainment Plan",
+    "price": "Rs. 1499",
+    "data": "10 GB/Day",
+    "validity": "120 Days",
+    "additionalBenefits": "Unlimited calls, texts, and data rollover.",
+    "subscriptions": [
+      { "type": "netflix", "description": "12 Months Free" },
+      { "type": "amazon", "description": "12 Months Free" },
+      { "type": "hbo", "description": "12 Months Free" }
+    ]
+  }
+]

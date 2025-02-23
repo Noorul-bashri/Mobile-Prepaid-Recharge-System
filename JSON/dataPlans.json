@@ -1,0 +1,59 @@
+[
+    {
+      "name": "Data Add-on",
+      "price": "Rs.299",
+      "data": "10 GB",
+      "validity": "30 Days",
+      "additionalBenefits": "No speed restrictions."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.199",
+      "data": "5 GB",
+      "validity": "28 Days",
+      "additionalBenefits": "Works with existing plans."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.99",
+      "data": "2 GB",
+      "validity": "7 Days",
+      "additionalBenefits": "Ideal for short-term use."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.49",
+      "data": "1 GB",
+      "validity": "1 Day",
+      "additionalBenefits": "Best for emergency data needs."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.399",
+      "data": "15 GB",
+      "validity": "60 Days",
+      "additionalBenefits": "For heavy data users."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.599",
+      "data": "30 GB",
+      "validity": "90 Days",
+      "additionalBenefits": "Great for streaming & gaming."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.79",
+      "data": "1.5 GB",
+      "validity": "3 Days",
+      "additionalBenefits": "Affordable short-term data boost."
+    },
+    {
+      "name": "Data Add-on",
+      "price": "Rs.899",
+      "data": "50 GB",
+      "validity": "120 Days",
+      "additionalBenefits": "Long-term extra data pack."
+    }
+  ]
+  

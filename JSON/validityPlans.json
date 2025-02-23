@@ -1,0 +1,89 @@
+{
+  "plans": [
+    {
+      "id": "plan1",
+      "name": "Validity Plan",
+      "price": "Rs.2999",
+      "data": "2.5 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Unlimited calls and free SMS",
+      "subscriptions": [
+        { "type": "netflix", "description": "Netflix Subscription" }
+      ]
+    },
+    {
+      "id": "plan2",
+      "name": "Validity Plan",
+      "price": "Rs.1999",
+      "data": "1.5 GB/Day",
+      "validity": "180 Days",
+      "benefits": "Unlimited calls and 100 SMS",
+      "subscriptions": [
+        { "type": "amazon", "description": "Amazon Prime" }
+      ]
+    },
+    {
+      "id": "plan3",
+      "name": "Validity Plan",
+      "price": "Rs.999",
+      "data": "1.5 GB/Day",
+      "validity": "180 Days",
+      "benefits": "Basic plan with standard benefits",
+      "subscriptions": [
+        { "type": "disney", "description": "Disney+ Subscription" }
+      ]
+    },
+    {
+      "id": "plan4",
+      "name": "Validity Plan",
+      "price": "Rs.899",
+      "data": "1.5 GB/Day",
+      "validity": "180 Days",
+      "benefits": "Standard benefits with unlimited calls",
+      "subscriptions": [
+        { "type": "hbo", "description": "HBO Subscription" }
+      ]
+    },
+    {
+      "id": "plan5",
+      "name": "Validity Plan",
+      "price": "Rs.699",
+      "data": "1.5 GB/Day",
+      "validity": "180 Days",
+      "benefits": "Affordable plan with basic benefits",
+      "subscriptions": [
+        { "type": "youtube", "description": "YouTube Premium" }
+      ]
+    },
+    {
+      "id": "plan6",
+      "name": "Validity Plan",
+      "price": "Rs.369",
+      "data": "1.5 GB/Day",
+      "validity": "180 Days",
+      "benefits": "Entry level plan with essential benefits",
+      "subscriptions": []
+    },
+    {
+      "id": "plan7",
+      "name": "Validity Plan",
+      "price": "Rs.3999",
+      "data": "3 GB/Day",
+      "validity": "365 Days",
+      "benefits": "Premium plan with extra data and unlimited calls",
+      "subscriptions": [
+        { "type": "netflix", "description": "Netflix Subscription" },
+        { "type": "amazon", "description": "Amazon Prime" }
+      ]
+    },
+    {
+      "id": "plan8",
+      "name": "Validity Plan",
+      "price": "Rs.1299",
+      "data": "1 GB/Day",
+      "validity": "120 Days",
+      "benefits": "Budget plan with limited benefits",
+      "subscriptions": []
+    }
+  ]
+}

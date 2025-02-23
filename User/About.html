@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobi-Comm Services Ltd.</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/css/main.min.css" />
+  <style>
+    .content-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    /* Shared container styling (for About Us, Mission/Vision, Card/Image group) */
+    .highlight {
+      border-radius: 5px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #f8f7f7;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease; /* Added transition */
+    }
+    /* Zoom effect on hover for highlight containers */
+    .highlight:hover {
+      transform: scale(1.05);
+    }
+    /* Header Banner */
+    header.banner {
+      position: relative;
+      background: url('../Images/backgrounf.jpeg') no-repeat center center;
+      background-size: cover;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header.banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header.banner .banner-content {
+      position: relative;
+      z-index: 2;
+    }
+    header.banner .banner-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      color: white;
+    }
+    header.banner .banner-content p {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    /* Section Headings */
+    .section-heading {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .section-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Header Banner -->
+  <header class="banner">
+    <div class="content-container banner-content">
+      <h1>Mobi-Comm Service Pvt Ltd</h1>
+      <p>Empowering the future of digital communication with seamless connectivity and innovative solutions.</p>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <div class="container-fluid bg-opacity-75">
+    <nav class="navbar navbar-expand-sm">
+      <div class="container-fluid content-container">
+        <a class="navbar-brand" href="#">
+          <img src="../Images/logo.jpeg" alt="Logo" style="width:50px; height:40px;" class="rounded-circle" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <h4 style="font-family: Arial, Helvetica, sans-serif;" class="fw-bold">
+                Seamless Connectivity, Limitless Innovation
+              </h4>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <a type="button" class="btn bg-black text-white text-decoration-none ms-3" href="Login.html">Login</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <br>
+
+  <!-- About Us Section -->
+  <div class="container-fluid">
+    <div class="content-container">
+      <div class="row">
+        <div class="col-md-8">
+          <h5>About Us</h5>
+          <p>
+            To recharge your mobile number, enter your mobile number and select the continue option and enter the email to receive an email message.
+            Browse through the available plans and choose one that fits your needs. Proceed with payment using options like UPI, debit/credit card, net banking, or digital wallets.
+            Once the payment is successful, you will receive a confirmation message via Email, indicating that your recharge has been completed.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <!-- About Us Image wrapped in a highlight container -->
+          <div class="highlight">
+            <img src="../Images/5g.jpg" alt="About Us" class="img-fluid rounded" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!-- Our Mission Section: Image on Left, Text on Right -->
+  <div class="container my-5">
+    <div class="content-container highlight">
+      <div class="row align-items-center">
+        <!-- Left Column: Mission Image -->
+        <div class="col-md-4">
+          <div class="highlight">
+            <img src="../Images/mission.jpeg" alt="Our Mission" class="img-fluid rounded" />
+          </div>
+        </div>
+        <!-- Right Column: Mission Text -->
+        <div class="col-md-6">
+          <h2 class="section-heading">Our Mission</h2>
+          <div class="section-content">
+            <p>
+              Our mission is to empower every individual and business with reliable, innovative digital solutions that transform the way they connect, communicate, and engage with the world.
+              We strive to provide state-of-the-art connectivity and digital services that are accessible, efficient, and secure.
+            </p>
+            <p>
+              By continuously innovating and adapting to emerging technologies, we aim to be the catalyst for change in the digital ecosystem—ensuring that our customers are always ahead in a fast-paced technological era.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Vision Section: Text on Left, Image on Right -->
+  <div class="container my-5">
+    <div class="content-container highlight">
+      <div class="row align-items-center">
+        <!-- Left Column: Vision Text -->
+        <div class="col-md-6">
+          <h2 class="section-heading">Our Vision</h2>
+          <div class="section-content">
+            <p>
+              We envision a world where seamless digital connectivity transforms every aspect of life—from how we communicate to how we work and play.
+              Our vision is to lead the way in creating a fully interconnected, intelligent digital landscape that bridges distances and connects people across the globe.
+            </p>
+            <p>
+              As we continue to grow, our focus remains on building innovative solutions that anticipate the needs of tomorrow, ensuring that our services remain relevant, efficient, and transformative.
+            </p>
+          </div>
+        </div>
+        <!-- Right Column: Vision Image -->
+        <div class="col-md-6">
+          <img src="../Images/vision.jpeg" alt="Our Vision" class="img-fluid rounded w-100" style="object-fit: cover; height: 100%;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Container: Image at Left and Card at Right -->
+  <div class="container my-5">
+    <div class="content-container highlight">
+      <div class="row align-items-stretch">
+        <!-- Left Column: Promotional Image -->
+        <div class="col-md-6">
+          <img src="../Images/login.jpg" alt="Recharge Promo" class="img-fluid rounded w-100 h-100" style="object-fit: cover;">
+        </div>
+        <!-- Right Column: Mobile Recharge Card -->
+        <div class="col-md-6 d-flex">
+          <div class="p-3 w-100 d-flex flex-column justify-content-center">
+            <div class="card border-0 bg-white">
+              <div class="card-title">
+                <h2 class="text-center pt-4">Mobile Recharge</h2>
+              </div>
+              <hr />
+              <div class="card-body">
+                <h4 class="card-text">Mobile number</h4>
+                <form>
+                  <div class="mb-3">
+                    <input type="tel" id="mobile_num" class="form-control" placeholder="Enter Mobile Number" required>
+                    <small class="text-danger" id="mobileError"></small>
+                  </div>
+                  <div class="text-center">
+                    <button type="button" id="continueButton" class="btn btn-secondary fw-bold w-100">Continue</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email Modal -->
+  <div class="modal fade" id="emailCard" tabindex="-1" aria-labelledby="emailCardLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Email</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <input type="email" id="email" class="form-control" placeholder="Enter your Email" required>
+              <small class="text-danger" id="emailError"></small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="planButton" class="btn btn-secondary fw-bold">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('continueButton').addEventListener('click', function () {
+      const mobileNumber = document.getElementById('mobile_num').value.trim();
+      const mobileError = document.getElementById('mobileError');
+      const mobilePattern = /^[0-9]{10}$/;
+      if (!mobilePattern.test(mobileNumber)) {
+        mobileError.textContent = 'Please enter a valid 10-digit mobile number.';
+      } else {
+        mobileError.textContent = '';
+        var emailModal = new bootstrap.Modal(document.getElementById('emailCard'));
+        emailModal.show();
+      }
+    });
+    document.getElementById('planButton').addEventListener('click', function () {
+      const email = document.getElementById('email').value.trim();
+      const emailError = document.getElementById('emailError');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        emailError.textContent = 'Please enter a valid email address.';
+      } else {
+        emailError.textContent = '';
+        window.location.href = 'HomePage.html';
+      }
+    });
+  </script>
+  <br>
+
+  <!-- Footer -->
+  <footer>
+    <!-- Footer Top -->
+    <div class="footer-top">
+      <div class="content-container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Mobi-Comm Service Pvt Ltd</h5>
+            <p>Connecting People, Anytime, Anywhere.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="About.html">About Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Connect With Us</h5>
+            <p>Follow us on social media for the latest updates.</p>
+            <a href="#" class="me-2 text-white"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="me-2 text-white"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="me-2 text-white"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="content-container">
+        <p class="mb-0">&copy; 2025 Mobi-Comm Service Pvt Ltd. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

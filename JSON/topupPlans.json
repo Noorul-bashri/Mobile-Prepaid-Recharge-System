@@ -1,0 +1,69 @@
+{
+    "topupPlans": [
+      {
+        "id": 1,
+        "name": "Topup Boost 50",
+        "price": "Rs.50",
+        "talktime": "100 mins",
+        "validity": "1 Day",
+        "description": "Extra talktime boost for short calls."
+      },
+      {
+        "id": 2,
+        "name": "Topup Boost 100",
+        "price": "Rs.100",
+        "talktime": "200 mins",
+        "validity": "1 Day",
+        "description": "Enjoy additional talktime with this boost."
+      },
+      {
+        "id": 3,
+        "name": "Topup Plus 150",
+        "price": "Rs.150",
+        "talktime": "260 mins",
+        "validity": "1 Day",
+        "description": "Get extra talktime for extended conversations."
+      },
+      {
+        "id": 4,
+        "name": "Topup Plus 200",
+        "price": "Rs.200",
+        "talktime": "300 mins",
+        "validity": "1 Day",
+        "description": "Recharge with extra credit for more calls."
+      },
+      {
+        "id": 5,
+        "name": "Topup Max 250",
+        "price": "Rs.250",
+        "talktime": "350 mins",
+        "validity": "1 Day",
+        "description": "Boost your calling with a Rs.250 recharge."
+      },
+      {
+        "id": 6,
+        "name": "Topup Max 300",
+        "price": "Rs.300",
+        "talktime": "450 mins",
+        "validity": "1 Day",
+        "description": "Maximize your talktime with a Rs.300 topup."
+      },
+      {
+        "id": 7,
+        "name": "Topup Ultra 500",
+        "price": "Rs.500",
+        "talktime": "600 mins",
+        "validity": "1 Day",
+        "description": "Ultra topup for uninterrupted connectivity."
+      },
+      {
+        "id": 8,
+        "name": "Topup Ultra 1000",
+        "price": "Rs.1000",
+        "talktime": "1500 mins",
+        "validity": "1 Day",
+        "description": "Recharge big with a Rs.1000 topup and get Rs.500 talktime."
+      }
+    ]
+  }
+  

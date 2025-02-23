@@ -10,6 +10,46 @@
   <link rel="stylesheet" href="/css/main.min.css">
   <style>
     /* Entire page now has the same gradient background as the sidebar */
+    .content-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    /* Top Header Banner with overlay */
+    header.banner {
+      position: relative;
+      background: url('../Images/backgrounf.jpeg') no-repeat center center;
+      background-size: cover;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header.banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header.banner .banner-content {
+      position: relative;
+      z-index: 2;
+    }
+    header.banner .banner-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      color: white;
+    }
+    header.banner .banner-content p {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
     body {
       margin: 0;
       min-height: 100vh;
@@ -70,15 +110,17 @@
   </style>
 </head>
 <body>
-  <header class="d-flex align-items-center justify-content-center"
-          style="background: url('Images/backgrounf.jpeg') no-repeat center center; background-size: cover; height: 100px;">
-    <h2 class="text-center p-2 text-black">Mobi-Comm Services Ltd.</h2>
+  <header class="banner">
+    <div class="content-container banner-content">
+      <h1>Mobi-Comm Service Pvt Ltd</h1>
+      <p>Empowering the future of digital communication with seamless connectivity and innovative solutions.</p>
+    </div>
   </header>
 
   <div class="container-fluid">
     <div class="row">
       <nav class="col-md-3 col-lg-2 sidebar p-3 text-center">
-        <img src="Images/profile.png" alt="Admin Profile" class="rounded-circle mb-2" width="100">
+        <img src="../Images/profile.png" alt="Admin Profile" class="rounded-circle mb-2" width="100">
         <h4 class="text-white">Admin Name</h4>
         <hr class="text-white">
         <a href="#" onclick="showSection('subscribers')">Subscribers</a>
