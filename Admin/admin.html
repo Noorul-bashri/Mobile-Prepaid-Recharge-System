@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="/css/main.min.css">
+  <link rel="stylesheet" href="/css/main.min.css" />
   <style>
-    /* Entire page now has the same gradient background as the sidebar */
+    /* Global container */
     .content-container {
       max-width: 1140px;
       margin: 0 auto;
       padding: 0 1.5rem;
       width: 100%;
     }
-    /* Top Header Banner with overlay */
+    /* Banner styles */
     header.banner {
       position: relative;
       background: url('../Images/backgrounf.jpeg') no-repeat center center;
@@ -50,12 +50,14 @@
       margin-bottom: 1rem;
       color: white;
     }
+    /* Global body styles */
     body {
       margin: 0;
       min-height: 100vh;
       font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #2c3e50, #34495e) no-repeat center center fixed;
     }
+    /* Sidebar styles */
     .sidebar {
       height: 100vh;
       background: linear-gradient(135deg, #2c3e50, #34495e);
@@ -73,6 +75,7 @@
     .sidebar a:hover {
       background: #1abc9c;
     }
+    /* Card styles */
     .card-custom {
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -80,21 +83,22 @@
       background: #ffffff;
       transition: transform 0.3s ease-in-out;
     }
-    /* Zoom in/out on hover */
     .card-custom:hover {
       transform: scale(1.05);
     }
+    /* Chart container */
     .chart-container {
       width: 45%;
       margin: 10px;
       display: inline-block;
     }
+    /* Settings section styling */
     .settings-section {
       background: #ecf0f1;
       padding: 20px;
       border-radius: 15px;
     }
-    /* Make main content white so it stands out against the gradient body */
+    /* Main content area */
     main {
       background: #fff;
       border-radius: 8px;
@@ -108,62 +112,64 @@
       <p>Empowering the future of digital communication with seamless connectivity and innovative solutions.</p>
     </div>
   </header>
-
+  
   <div class="container-fluid">
     <div class="row">
+      <!-- Sidebar Navigation -->
       <nav class="col-md-3 col-lg-2 sidebar p-3 text-center">
-        <img src="../Images/profile.png" alt="Admin Profile" class="rounded-circle mb-2" width="100">
+        <img src="../Images/profile.png" alt="Admin Profile" class="rounded-circle mb-2" width="100" />
         <h4 class="text-white">Admin Name</h4>
-        <hr class="text-white">
+        <hr class="text-white" />
         <a href="#" onclick="showSection('subscribers')">Subscribers</a>
         <a href="#" onclick="showSection('managePlans')">Manage Plans</a>
         <a href="#" onclick="showSection('userManagement')">User Management</a>
         <a href="#" onclick="showSection('analytics')">Analytics</a>
         <a href="#" onclick="showSection('settings')">Settings</a>
       </nav>
-
+      
+      <!-- Main Content Area -->
       <main class="col-md-9 col-lg-10 p-4">
-        <!-- Subscribers Section -->
-        <section id="subscribers">
-          <h5 class="bg-black bg-opacity-10 p-3">Subscribers with Expiring Plans</h5>
-          <!-- Accordion: Each subscriber's name is shown with a "View History" button -->
-          <div id="subscriberList" class="accordion"></div>
-
-          <h5 class="mt-4 bg-black bg-opacity-10 text-black p-3">Details</h5>
-          <br>
-          <div class="d-flex flex-column align-items-center">
-            <div class="card-custom text-center mb-5" style="width: 550px; border: 2px solid #000;">
-              <h5 class="bg-black bg-opacity-25 text-black m-0 p-2"><strong>Total Active Subscribers</strong></h5><br>
-              <span id="totalActiveSubscribers"></span>
-            </div>
-            <div class="card-custom text-center p-3" style="width: 550px; border: 2px solid #000;">
-              <h5 class="bg-black bg-opacity-25 text-black m-0 p-2"><strong>Most used Plan</strong></h5><br>
-              <span id="mostUsedPlan"></span>
-            </div>
+        <!-- Subscribers Section: Show users with at least one transaction expiring within 3 days -->
+        <section id="subscribers" class="d-none">
+          <h5 class="bg-black bg-opacity-10 p-3">Subscribers with Expiring Plans (within 3 days)</h5>
+          <div id="subscriberList">
+            <!-- Expiring subscriber list will be rendered here -->
           </div>
         </section>
-
-        <!-- Manage Plans Section -->
+        
+        <!-- Manage Plans Section (hidden by default) -->
         <section id="managePlans" class="d-none">
           <h3>Manage Plans</h3>
-          <input type="text" id="planName" class="form-control mb-2" placeholder="Plan Name">
-          <input type="number" id="planPrice" class="form-control mb-2" placeholder="Price">
+          <input type="text" id="planName" class="form-control mb-2" placeholder="Plan Name" />
+          <input type="number" id="planPrice" class="form-control mb-2" placeholder="Price" />
           <button class="btn btn-primary" onclick="addPlan()">Add Plan</button>
           <ul id="planList" class="list-group mt-3"></ul>
         </section>
-
+        
         <!-- User Management Section -->
-        <section id="userManagement" class="d-none">
+        <section id="userManagement">
           <h3>User Management</h3>
           <div class="mb-3">
-            <input type="text" id="newUserName" class="form-control" placeholder="User Name">
-            <input type="email" id="newUserEmail" class="form-control mt-2" placeholder="User Email">
+            <input type="text" id="newUserName" class="form-control" placeholder="User Name" />
+            <input type="email" id="newUserEmail" class="form-control mt-2" placeholder="User Email" />
             <button class="btn btn-primary mt-2" onclick="addUser()">Add User</button>
           </div>
-          <ul id="userList" class="list-group"></ul>
+          <table class="table table-bordered" id="userTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- User rows will be rendered here -->
+            </tbody>
+          </table>
         </section>
-
-        <!-- Analytics Section -->
+        
+        <!-- Analytics Section (hidden by default) -->
         <section id="analytics" class="d-none">
           <h3>Usage Analytics</h3>
           <div class="chart-container">
@@ -175,8 +181,8 @@
             <canvas id="monthlyPlanChart"></canvas>
           </div>
         </section>
-
-        <!-- Settings Section -->
+        
+        <!-- Settings Section (hidden by default) -->
         <section id="settings" class="d-none settings-section">
           <h3>Settings</h3>
           <button class="btn btn-secondary text-black fw-bold mb-2" onclick="changePassword()">Change Password</button>
@@ -186,131 +192,234 @@
       </main>
     </div>
   </div>
-
+  
+  <!-- Transaction History Modal -->
+  <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="transactionModalLabel">Transaction History</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="transactionModalBody">
+          <!-- Transaction history will be injected here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <script>
-    const subscribers = [
-      {
-        name: "Noorul",
-        number: "9876543210",
-        plan: "Popular Plan",
-        history: [
-          { plan: "Popular Plan", date: "2024-01-01", paymentMode: "Credit Card" },
-          { plan: "Data Plan", date: "2023-12-01", paymentMode: "UPI" },
-          { plan: "Topup Plan", date: "2023-11-01", paymentMode: "Debit Card" },
-          { plan: "Popular Plan", date: "2023-10-01", paymentMode: "Net Banking" }
-        ]
-      },
-      {
-        name: "Advaitha",
-        number: "9123456789",
-        plan: "Annual Plan",
-        history: [
-          { plan: "Data Plan", date: "2024-02-10", paymentMode: "Debit Card" },
-          { plan: "Popular Plan", date: "2023-11-10", paymentMode: "Net Banking" },
-          { plan: "Entertainment Plan", date: "2023-08-10", paymentMode: "Credit Card" },
-          { plan: "Data Plan", date: "2023-05-10", paymentMode: "UPI" }
-        ]
-      },
-      {
-        name: "Supriya",
-        number: "9123456789",
-        plan: "Annual Plan",
-        history: [
-          { plan: "Data Plan", date: "2024-02-10", paymentMode: "Debit Card" },
-          { plan: "Popular Plan", date: "2023-11-10", paymentMode: "Net Banking" },
-          { plan: "Entertainment Plan", date: "2023-08-10", paymentMode: "Credit Card" },
-          { plan: "Data Plan", date: "2023-05-10", paymentMode: "UPI" }
-        ]
-      }
-    ];
-
+    /* === Plans Data & Functions === */
     let plans = [
       { name: "Popular Plan", price: 299 },
       { name: "Annual Plan", price: 1999 },
-      { name: "Entertainment Plan", price: 1999 },
-      { name: "Topup Plan", price: 1999 },
-      { name: "Data Plan", price: 499 }
+      { name: "Entertainment Plans", price: 1999 },
+      { name: "Topup Plans", price: 1999 },
+      { name: "Validity Plans", price: 499 },
+      { name: "Data Add on Plans", price: 599 }
     ];
-
-    // Sample initial users – you can start with an empty array if preferred.
-    let users = [
-      { name: "John Doe", email: "john@example.com" },
-      { name: "Jane Doe", email: "jane@example.com" }
-    ];
-
-    function showSection(sectionId) {
-      document.querySelectorAll("section").forEach(section => section.classList.add("d-none"));
-      document.getElementById(sectionId).classList.remove("d-none");
-    }
-
-    // Subscribers functions
-    function loadSubscribers() {
-      const subscriberList = document.getElementById('subscriberList');
-      subscriberList.innerHTML = `
-        <div class="accordion" id="subscriberAccordion">
-          ${subscribers.map((subscriber, index) => `
-            <div class="accordion-item">
-              <div class="d-flex justify-content-between align-items-center p-3" id="heading${index}">
-                <span>${subscriber.name}</span>
-                <button class="btn btn-secondary text-black fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false" aria-controls="collapse${index}">
-                  View History
-                </button>
-              </div>
-              <div id="collapse${index}" class="accordion-collapse collapse" aria-labelledby="heading${index}" data-bs-parent="#subscriberAccordion">
-                <div class="accordion-body">
-                  <div class="row">
-                    ${subscriber.history.map(entry => {
-                      const planInfo = plans.find(p => p.name === entry.plan);
-                      const priceDisplay = planInfo ? planInfo.price : 'Price not available';
-                      return `
-                        <div class="col-md-6 mb-3">
-                          <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">${entry.plan}</h5>
-                              <p class="card-text"><strong>Rs:</strong> ${priceDisplay}</p>
-                              <hr>
-                              <p class="card-text"><strong>Date of Payment:</strong> ${entry.date}</p>
-                              <p class="card-text"><strong>Payment Type:</strong> ${entry.paymentMode}</p>
-                            </div>
-                          </div>
-                        </div>
-                      `;
-                    }).join('')}
-                  </div>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    }
-
-    function updateActiveSubscribersInfo() {
-      const totalActiveSubscribers = subscribers.length;
-      document.getElementById('totalActiveSubscribers').textContent = totalActiveSubscribers;
-
-      const planCounts = {};
-      subscribers.forEach(subscriber => {
-        planCounts[subscriber.plan] = (planCounts[subscriber.plan] || 0) + 1;
-      });
-
-      let mostUsedPlan = '';
-      let maxCount = 0;
-      for (const [plan, count] of Object.entries(planCounts)) {
-        if (count > maxCount) {
-          mostUsedPlan = plan;
-          maxCount = count;
-        }
+    
+    function addPlan() {
+      const planName = document.getElementById('planName').value;
+      const planPrice = document.getElementById('planPrice').value;
+      if (planName && planPrice) {
+        plans.push({ name: planName, price: parseFloat(planPrice) });
+        renderPlans();
+        document.getElementById('planName').value = '';
+        document.getElementById('planPrice').value = '';
+      } else {
+        alert('Please fill in both fields.');
       }
-      document.getElementById('mostUsedPlan').textContent = mostUsedPlan;
     }
-
-    // Chart functions
+    
+    function renderPlans() {
+      const planList = document.getElementById('planList');
+      planList.innerHTML = plans.map((plan, index) => `
+        <li class="list-group-item">
+          <strong>${plan.name}</strong> - $${plan.price}
+          <button class="btn btn-warning btn-sm float-end" onclick="updatePlan(${index})">Update</button>
+          <button class="btn btn-danger btn-sm float-end me-2" onclick="deletePlan(${index})">Delete</button>
+        </li>
+      `).join('');
+    }
+    
+    function updatePlan(index) {
+      const plan = plans[index];
+      const newName = prompt('Enter new plan name:', plan.name);
+      const newPrice = prompt('Enter new plan price:', plan.price);
+      if (newName && newPrice) {
+        plans[index] = { name: newName, price: parseFloat(newPrice) };
+        renderPlans();
+      }
+    }
+    
+    function deletePlan(index) {
+      if (confirm('Are you sure you want to delete this plan?')) {
+        plans.splice(index, 1);
+        renderPlans();
+      }
+    }
+    
+    /* === User Management & Subscribers Data (External JSON) === */
+    let users = []; // Populated from external JSON
+    
+    function loadUsers() {
+      fetch('/JSON/userNumber.json')
+        .then(response => response.json())
+        .then(data => {
+          // If the JSON has a "users" key, use that array
+          users = data.users || data;
+          renderUsers();
+          renderExpiringSubscribers();
+        })
+        .catch(error => {
+          console.error('Error loading user data:', error);
+          // Fallback sample data
+          users = [
+            { name: "John Doe", email: "john@example.com", phone: "1234567890", transactions: [] },
+            { name: "Jane Doe", email: "jane@example.com", phone: "2345678901", transactions: [] }
+          ];
+          renderUsers();
+          renderExpiringSubscribers();
+        });
+    }
+    
+    function renderUsers() {
+      const tableBody = document.querySelector("#userTable tbody");
+      tableBody.innerHTML = users.map((user, index) => `
+        <tr>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>${user.phone}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" onclick="updateUser(${index})">Update</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteUser(${index})">Delete</button>
+            <button class="btn btn-info btn-sm" onclick="viewTransactions(${index})">View History</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+    
+    function addUser() {
+      const userName = document.getElementById("newUserName").value;
+      const userEmail = document.getElementById("newUserEmail").value;
+      if (userName && userEmail) {
+        const userPhone = Math.floor(1000000000 + Math.random() * 9000000000).toString();
+        // New users start with an empty transactions array
+        users.push({ name: userName, email: userEmail, phone: userPhone, transactions: [] });
+        renderUsers();
+        renderExpiringSubscribers();
+        document.getElementById("newUserName").value = "";
+        document.getElementById("newUserEmail").value = "";
+      } else {
+        alert("Please fill in both fields.");
+      }
+    }
+    
+    function updateUser(index) {
+      const user = users[index];
+      const newName = prompt("Enter new name:", user.name);
+      const newEmail = prompt("Enter new email:", user.email);
+      if (newName && newEmail) {
+        users[index] = { ...user, name: newName, email: newEmail };
+        renderUsers();
+        renderExpiringSubscribers();
+      }
+    }
+    
+    function deleteUser(index) {
+      if (confirm("Are you sure you want to delete this user?")) {
+        users.splice(index, 1);
+        renderUsers();
+        renderExpiringSubscribers();
+      }
+    }
+    
+    /* === Subscribers Section: Render users with expiring transactions within 3 days === */
+    function renderExpiringSubscribers() {
+      const now = new Date();
+      const threeDaysLater = new Date(now);
+      threeDaysLater.setDate(now.getDate() + 3);
+      const expiringUsers = users.filter(user =>
+        user.transactions && user.transactions.some(tran => {
+          const exp = new Date(tran.expiryDate);
+          return exp >= now && exp <= threeDaysLater;
+        })
+      );
+      
+      const subscriberList = document.getElementById('subscriberList');
+      if (expiringUsers.length === 0) {
+        subscriberList.innerHTML = "<p>No subscribers with expiring plans within 3 days.</p>";
+      } else {
+        let html = `<table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Phone</th>
+                          <th>Expiring Transaction(s)</th>
+                        </tr>
+                      </thead>
+                      <tbody>`;
+        expiringUsers.forEach(user => {
+          const expiringTrans = user.transactions.filter(tran => {
+            const exp = new Date(tran.expiryDate);
+            return exp >= now && exp <= threeDaysLater;
+          });
+          const transHtml = expiringTrans.map(tran =>
+            `${tran.plan} (Expires: ${tran.expiryDate}, via ${tran.paymentMode})`
+          ).join("<br>");
+          html += `<tr>
+                     <td>${user.name}</td>
+                     <td>${user.phone}</td>
+                     <td>${transHtml}</td>
+                   </tr>`;
+        });
+        html += "</tbody></table>";
+        subscriberList.innerHTML = html;
+      }
+    }
+    
+    /* === Function to view a user's transaction history in a modal === */
+    function viewTransactions(index) {
+      const user = users[index];
+      let modalBody = document.getElementById('transactionModalBody');
+      let html = `<p><strong>${user.name}'s Transaction History</strong></p>`;
+      if (user.transactions && user.transactions.length > 0) {
+        html += `<table class="table table-bordered">
+                   <thead>
+                     <tr>
+                       <th>Plan</th>
+                       <th>Date</th>
+                       <th>Payment Mode</th>
+                       <th>Expiry Date</th>
+                     </tr>
+                   </thead>
+                   <tbody>`;
+        user.transactions.forEach(tran => {
+          html += `<tr>
+                     <td>${tran.plan}</td>
+                     <td>${tran.date}</td>
+                     <td>${tran.paymentMode}</td>
+                     <td>${tran.expiryDate}</td>
+                   </tr>`;
+        });
+        html += `</tbody></table>`;
+      } else {
+        html += `<p>No transaction history available.</p>`;
+      }
+      modalBody.innerHTML = html;
+      var transactionModal = new bootstrap.Modal(document.getElementById('transactionModal'));
+      transactionModal.show();
+    }
+    
+    /* === Analytics (Chart) Functions === */
     function loadChart() {
       const ctx = document.getElementById('planChart').getContext('2d');
-      const chartPlans = ['Popular Plans', 'Validity Plans', 'Data Addon Plan', 'Annual Plans', 'Entertainment Plans', 'Top Up Plans'];
+      const chartPlans = ['Popular Plans', 'Validity Plans', 'Data Add on Plans', 'Annual Plans', 'Entertainment Plans', 'Topup Plans'];
       const subscriberData = [20, 15, 10, 30, 25, 18];
-
       new Chart(ctx, {
         type: 'bar',
         data: {
@@ -328,25 +437,19 @@
               showPlanDetails(chartPlans[index]);
             }
           },
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
+          scales: { y: { beginAtZero: true } }
         }
       });
     }
-
+    
     function showPlanDetails(plan) {
       document.getElementById("planDetails").innerHTML = `<h4>${plan} Monthly Analysis</h4>`;
       loadMonthlyPlanChart(plan);
     }
-
+    
     function loadMonthlyPlanChart(plan) {
       const ctx = document.getElementById('monthlyPlanChart').getContext('2d');
-      if (window.monthlyChart) {
-        window.monthlyChart.destroy();
-      }
+      if (window.monthlyChart) { window.monthlyChart.destroy(); }
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const monthlyData = Array.from({ length: 12 }, () => Math.floor(Math.random() * 100) + 10);
       window.monthlyChart = new Chart(ctx, {
@@ -360,128 +463,68 @@
             fill: false
           }]
         },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
+        options: { scales: { y: { beginAtZero: true } } }
       });
     }
-
-    // Manage Plans functions
-    function addPlan() {
-      const planName = document.getElementById('planName').value;
-      const planPrice = document.getElementById('planPrice').value;
-      if (planName && planPrice) {
-        plans.push({ name: planName, price: parseFloat(planPrice) });
-        renderPlans();
-        document.getElementById('planName').value = '';
-        document.getElementById('planPrice').value = '';
-      } else {
-        alert('Please fill in both fields.');
-      }
-    }
-
-    function renderPlans() {
-      const planList = document.getElementById('planList');
-      planList.innerHTML = plans.map((plan, index) => `
-        <li class="list-group-item">
-          <strong>${plan.name}</strong> - $${plan.price}
-          <button class="btn btn-warning btn-sm float-end" onclick="updatePlan(${index})">Update</button>
-          <button class="btn btn-danger btn-sm float-end me-2" onclick="deletePlan(${index})">Delete</button>
-        </li>
-      `).join('');
-    }
-
-    function updatePlan(index) {
-      const plan = plans[index];
-      const newName = prompt('Enter new plan name:', plan.name);
-      const newPrice = prompt('Enter new plan price:', plan.price);
-      if (newName && newPrice) {
-        plans[index] = { name: newName, price: parseFloat(newPrice) };
-        renderPlans();
-      }
-    }
-
-    function deletePlan(index) {
-      if (confirm('Are you sure you want to delete this plan?')) {
-        plans.splice(index, 1);
-        renderPlans();
-      }
-    }
-
-    // User Management functions
-    function renderUsers() {
-      const userList = document.getElementById("userList");
-      userList.innerHTML = users.map((user, index) => `
-        <li class="list-group-item">
-          <strong>${user.name}</strong> - ${user.email}
-          <button class="btn btn-warning btn-sm float-end" onclick="updateUser(${index})">Update</button>
-          <button class="btn btn-danger btn-sm float-end me-2" onclick="deleteUser(${index})">Delete</button>
-        </li>
-      `).join("");
-    }
-
-    function addUser() {
-      const userName = document.getElementById("newUserName").value;
-      const userEmail = document.getElementById("newUserEmail").value;
-      if (userName && userEmail) {
-        users.push({ name: userName, email: userEmail });
-        renderUsers();
-        document.getElementById("newUserName").value = "";
-        document.getElementById("newUserEmail").value = "";
-      } else {
-        alert("Please fill in both fields.");
-      }
-    }
-
-    function updateUser(index) {
-      const user = users[index];
-      const newName = prompt("Enter new name:", user.name);
-      const newEmail = prompt("Enter new email:", user.email);
-      if (newName && newEmail) {
-        users[index] = { name: newName, email: newEmail };
-        renderUsers();
-      }
-    }
-
-    function deleteUser(index) {
-      if (confirm("Are you sure you want to delete this user?")) {
-        users.splice(index, 1);
-        renderUsers();
-      }
-    }
-
-    // Settings functions
+    
+    /* === Settings Functions === */
     function changePassword() {
       alert('Change Password functionality to be implemented.');
     }
-
+    
     function exportData() {
       alert('Export Data functionality to be implemented.');
     }
-
+    
     function resetData() {
       if (confirm('Are you sure you want to reset all data?')) {
-        subscribers.length = 0;
-        plans.length = 0;
+        // Reset arrays and re-render sections
         users.length = 0;
-        loadSubscribers();
+        plans.length = 0;
+        loadUsers();
         renderPlans();
         renderUsers();
-        updateActiveSubscribersInfo();
+        renderExpiringSubscribers();
       }
     }
-
+    
+    /* === Section Toggling Utility === */
+    function showSection(sectionId) {
+      document.querySelectorAll("section").forEach(section => section.classList.add("d-none"));
+      document.getElementById(sectionId).classList.remove("d-none");
+      // If Subscribers section is selected, update its data
+      if (sectionId === "subscribers") {
+        renderExpiringSubscribers();
+      }
+    }
+    
+    /* === Initialize on Window Load === */
     window.onload = function() {
-      loadSubscribers();     
-      loadChart();
-      updateActiveSubscribersInfo();
+      loadUsers(); // Load external JSON user data from /JSON/userNumber.json
       renderPlans();
-      renderUsers();
+      loadChart();
+      // By default, show the User Management section
+      showSection('userManagement');
     };
   </script>
 </body>
+  
+<!-- Transaction History Modal -->
+<div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transactionModalLabel">Transaction History</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="transactionModalBody">
+        <!-- Transaction history will be injected here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
 </html>
