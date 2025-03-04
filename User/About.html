@@ -3,75 +3,856 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobi-Comm Services Ltd.</title>
+  <title>About Us - Mobi-Comm Services Ltd.</title>
+  
+  <!-- Bootstrap CSS & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- AOS Library for scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <link rel="stylesheet" href="/css/main.min.css" />
+  
   <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #6c63ff;
+      --primary-light: #9d9ade;
+      --primary-dark: #4d44d9;
+      --secondary-color: #55afc1;
+      --accent-color: #ff6b6b;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --bg-light: #f8f9fa;
+      --bg-dark: #343a40;
+      --transition-speed: 0.3s;
+      --section-spacing: 80px;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background-color: #f9f9f9;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    /* Section Spacing */
+    .section-padding {
+      padding: var(--section-spacing) 0;
+    }
+    
     .content-container {
       max-width: 1140px;
       margin: 0 auto;
       padding: 0 1.5rem;
       width: 100%;
     }
-    /* Shared container styling (for About Us, Mission/Vision, Card/Image group) */
+    
+    /* Shared container styling */
     .highlight {
-      border-radius: 5px;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      background-color: #f8f7f7;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
       margin-bottom: 2rem;
-      transition: transform 0.3s ease; /* Added transition */
+      transition: all 0.4s ease;
+      overflow: hidden;
+      position: relative;
     }
-    /* Zoom effect on hover for highlight containers */
+    
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
     .highlight:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
-    /* Header Banner */
+    
+    .highlight:hover::before {
+      transform: scaleX(1);
+    }
+    
+    /* Header Banner with Parallax Effect */
     header.banner {
       position: relative;
       background: url('../Images/backgrounf.jpeg') no-repeat center center;
       background-size: cover;
-      height: 250px;
+      background-attachment: fixed;
+      height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
+    
     header.banner::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
       z-index: 1;
     }
+    
     header.banner .banner-content {
       position: relative;
       z-index: 2;
+      animation: fadeInUp 1s ease-out;
     }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     header.banner .banner-content h1 {
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
+    
     header.banner .banner-content p {
       font-size: 1.25rem;
       margin-bottom: 1rem;
       color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
+    
+    /* Navbar Enhancement */
+    .navbar {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background-color: white;
+      padding: 15px 0;
+    }
+    
+    .navbar-brand img {
+      transition: transform 0.3s ease;
+    }
+    
+    .navbar-brand:hover img {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .nav-item h4 {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    
+    .navbar .btn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+    }
+    
+    .navbar .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s;
+      z-index: -1;
+    }
+    
+    .navbar .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar .btn:hover::before {
+      left: 100%;
+    }
+    
     /* Section Headings */
     .section-heading {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
     }
+    
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .highlight:hover .section-heading::after {
+      width: 100%;
+    }
+    
     .section-content p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       line-height: 1.8;
       color: #555;
+      margin-bottom: 1rem;
+    }
+    
+    /* About Us Section */
+    .about-section {
+      position: relative;
+      padding: var(--section-spacing) 0;
+    }
+    
+    .about-section h5 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .about-section h5::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .about-section:hover h5::after {
+      width: 100px;
+    }
+    
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    
+    .about-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-image-container img {
+      transition: transform 0.5s ease;
+    }
+    
+    .about-image-container:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Mission & Vision Sections */
+    .mission-vision-section {
+      padding: var(--section-spacing) 0;
+    }
+    
+    .mission-vision-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .mission-vision-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      height: 300px;
+    }
+    
+    .mission-vision-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .mission-vision-image:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Mobile Recharge Section */
+    .recharge-section {
+      padding: var(--section-spacing) 0;
+    }
+    
+    .recharge-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      height: 100%;
+    }
+    
+    .recharge-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .recharge-image:hover img {
+      transform: scale(1.1);
+    }
+    
+    .recharge-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .recharge-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .recharge-card .card-title h2 {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+    
+    .recharge-card .form-control {
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: 2px solid #e1e1e1;
+      transition: all 0.3s ease;
+    }
+    
+    .recharge-card .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(108, 99, 255, 0.25);
+    }
+    
+    .recharge-card .btn {
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+    
+    .recharge-card .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+    
+    /* Team Section */
+    .team-section {
+      padding: var(--section-spacing) 0;
+      background-color: var(--bg-light);
+    }
+    
+    .team-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .team-heading h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .team-heading h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    .team-heading p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .team-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .team-image {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+    
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .team-card:hover .team-image img {
+      transform: scale(1.1);
+    }
+    
+    .team-info {
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .team-info h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-dark);
+    }
+    
+    .team-info p.position {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .team-info p.bio {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-5px);
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      padding: var(--section-spacing) 0;
+    }
+    
+    .faq-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .faq-heading h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .faq-heading h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    .faq-heading p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .accordion-item {
+      border: none;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .accordion-item:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .accordion-button {
+      padding: 20px 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      background: white;
+    }
+    
+    .accordion-button:not(.collapsed) {
+      color: var(--primary-color);
+      background: white;
+      box-shadow: none;
+    }
+    
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: rgba(108, 99, 255, 0.25);
+    }
+    
+    .accordion-button::after {
+      background-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .accordion-body {
+      padding: 20px 25px;
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    /* Modal Enhancement */
+    .modal-content {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+      color: var(--text-dark);
+      border-bottom: none;
+      padding: 20px 25px;
+    }
+    
+    .modal-title {
+      font-weight: 600;
+    }
+    
+    .modal-body {
+      padding: 25px;
+    }
+    
+    .modal-footer {
+      border-top: none;
+      padding: 20px 25px;
+    }
+    
+    .modal-footer button {
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-footer button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+    
+    /* Footer Enhancement */
+    .footer-top {
+      background: linear-gradient(135deg, #343a40, #212529);
+      padding: 4rem 0 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer-top::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    }
+    
+    .footer-top h5 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      color: white;
+    }
+    
+    .footer-top h5::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 1.5px;
+    }
+    
+    .footer-top p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+    }
+    
+    .footer-top ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .footer-top ul li {
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .footer-top ul li:hover {
+      transform: translateX(5px);
+    }
+    
+    .footer-top ul li a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-top ul li a::before {
+      content: '→';
+      position: absolute;
+      left: -20px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-top ul li a:hover {
+      color: white;
+      padding-left: 20px;
+    }
+    
+    .footer-top ul li a:hover::before {
+      opacity: 1;
+      left: 0;
+    }
+    
+    /* Social Media Icons */
+    .footer-social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .footer-social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social-icon:hover {
+      background: var(--primary-color);
+      transform: translateY(-5px);
+    }
+    
+    /* Newsletter Section */
+    .newsletter-section {
+      margin-top: 2rem;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      position: relative;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 100%;
+      margin-top: 15px;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-form input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .newsletter-form input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .newsletter-form button {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .newsletter-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .subscription-message {
+      color: #a9b867;
+      margin-top: 1rem;
+      padding: 10px;
+      border-radius: 5px;
+      background: rgba(169, 184, 103, 0.1);
+      text-align: center;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    .newsletter-extra p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 15px;
+    }
+    
+    .footer-bottom {
+      background: #212529;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 1.25rem 0;
+      position: relative;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      :root {
+        --section-spacing: 60px;
+      }
+      
+      header.banner .banner-content h1 {
+        font-size: 2rem;
+      }
+      
+      .section-heading {
+        font-size: 2rem;
+      }
+      
+      .team-image {
+        height: 250px;
+      }
     }
   </style>
 </head>
@@ -97,133 +878,263 @@
         <div class="collapse navbar-collapse" id="mynavbar">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <h4 style="font-family: Arial, Helvetica, sans-serif;" class="fw-bold">
+              <h4 style="font-family: 'Montserrat', sans-serif;" class="fw-bold ">
                 Seamless Connectivity, Limitless Innovation
               </h4>
             </li>
           </ul>
           <form class="d-flex">
-            <a type="button" class="btn bg-black text-white text-decoration-none ms-3" href="Login.html">Login</a>
+            <a type="button" class="btn text-decoration-none ms-3" href="Login.html">Login</a>
           </form>
         </div>
       </div>
     </nav>
   </div>
-  <br>
 
   <!-- About Us Section -->
-  <div class="container-fluid">
+  <section class="about-section">
     <div class="content-container">
-      <div class="row">
-        <div class="col-md-8">
+      <div class="row align-items-center">
+        <div class="col-md-8" data-aos="fade-right" data-aos-duration="1000">
           <h5>About Us</h5>
           <p>
-            To recharge your mobile number, enter your mobile number and select the continue option and enter the email to receive an email message.
-            Browse through the available plans and choose one that fits your needs. Proceed with payment using options like UPI, debit/credit card, net banking, or digital wallets.
-            Once the payment is successful, you will receive a confirmation message via Email, indicating that your recharge has been completed.
+            At Mobi-Comm Service Pvt Ltd, we're dedicated to revolutionizing the mobile recharge experience. Founded in 2015, we've grown from a small startup to a leading provider of digital connectivity solutions across the nation.
+          </p>
+          <p>
+            To recharge your mobile number, simply enter your number and select continue to enter your email.
+            Browse through available plans and choose one that fits your needs. Proceed with payment using options
+            like UPI, debit/credit card, net banking, or digital wallets. Upon successful payment, you'll receive a confirmation.
+          </p>
+          <p>
+            Our platform processes over 1 million transactions daily, serving customers with reliability, security, and convenience. We partner with all major telecom providers to offer comprehensive coverage and the best available plans.
           </p>
         </div>
-        <div class="col-md-4">
-          <!-- About Us Image wrapped in a highlight container -->
-          <div class="highlight">
+        <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <div class="about-image-container">
             <img src="../Images/5g.jpg" alt="About Us" class="img-fluid rounded" />
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <br>
+  </section>
 
   <!-- Our Mission Section: Image on Left, Text on Right -->
-  <div class="container my-5">
-    <div class="content-container highlight">
-      <div class="row align-items-center">
-        <!-- Left Column: Mission Image -->
-        <div class="col-md-4">
-          <div class="highlight">
-            <img src="../Images/mission.jpeg" alt="Our Mission" class="img-fluid rounded" />
+  <section class="mission-vision-section">
+    <div class="content-container">
+      <div class="highlight" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row align-items-center">
+          <!-- Left Column: Mission Image -->
+          <div class="col-md-4">
+            <div class="mission-vision-image">
+              <img src="../Images/mission.jpeg" alt="Our Mission" class="img-fluid rounded" />
+            </div>
           </div>
-        </div>
-        <!-- Right Column: Mission Text -->
-        <div class="col-md-6">
-          <h2 class="section-heading">Our Mission</h2>
-          <div class="section-content">
-            <p>
-              Our mission is to empower every individual and business with reliable, innovative digital solutions that transform the way they connect, communicate, and engage with the world.
-              We strive to provide state-of-the-art connectivity and digital services that are accessible, efficient, and secure.
-            </p>
-            <p>
-              By continuously innovating and adapting to emerging technologies, we aim to be the catalyst for change in the digital ecosystem—ensuring that our customers are always ahead in a fast-paced technological era.
-            </p>
+          <!-- Right Column: Mission Text -->
+          <div class="col-md-8">
+            <h2 class="section-heading">Our Mission</h2>
+            <div class="section-content">
+              <p>
+                Our mission is to empower every individual and business with reliable, innovative digital solutions that transform the way they connect, communicate, and engage with the world.
+                We strive to provide state-of-the-art connectivity and digital services that are accessible, efficient, and secure.
+              </p>
+              <p>
+                By continuously innovating and adapting to emerging technologies, we aim to be the catalyst for change in the digital ecosystem—ensuring that our customers are always ahead in a fast-paced technological era.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Our Vision Section: Text on Left, Image on Right -->
-  <div class="container my-5">
-    <div class="content-container highlight">
-      <div class="row align-items-center">
-        <!-- Left Column: Vision Text -->
-        <div class="col-md-6">
-          <h2 class="section-heading">Our Vision</h2>
-          <div class="section-content">
-            <p>
-              We envision a world where seamless digital connectivity transforms every aspect of life—from how we communicate to how we work and play.
-              Our vision is to lead the way in creating a fully interconnected, intelligent digital landscape that bridges distances and connects people across the globe.
-            </p>
-            <p>
-              As we continue to grow, our focus remains on building innovative solutions that anticipate the needs of tomorrow, ensuring that our services remain relevant, efficient, and transformative.
-            </p>
+  <section class="mission-vision-section">
+    <div class="content-container">
+      <div class="highlight" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <div class="row align-items-center">
+          <!-- Left Column: Vision Text -->
+          <div class="col-md-8">
+            <h2 class="section-heading">Our Vision</h2>
+            <div class="section-content">
+              <p>
+                We envision a world where seamless digital connectivity transforms every aspect of life—from how we communicate to how we work and play.
+                Our vision is to lead the way in creating a fully interconnected, intelligent digital landscape that bridges distances and connects people across the globe.
+              </p>
+              <p>
+                As we continue to grow, our focus remains on building innovative solutions that anticipate the needs of tomorrow, ensuring that our services remain relevant, efficient, and transformative.
+              </p>
+            </div>
           </div>
-        </div>
-        <!-- Right Column: Vision Image -->
-        <div class="col-md-6">
-          <img src="../Images/vision.jpeg" alt="Our Vision" class="img-fluid rounded w-100" style="object-fit: cover; height: 100%;" />
+          <!-- Right Column: Vision Image -->
+          <div class="col-md-4">
+            <div class="mission-vision-image">
+              <img src="../Images/vision.jpeg" alt="Our Vision" class="img-fluid rounded" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Shared Container: Image at Left and Card at Right -->
-  <div class="container my-5">
-    <div class="content-container highlight">
-      <div class="row align-items-stretch">
-        <!-- Left Column: Promotional Image -->
-        <div class="col-md-6">
-          <img src="../Images/login.jpg" alt="Recharge Promo" class="img-fluid rounded w-100 h-100" style="object-fit: cover;">
-        </div>
-        <!-- Right Column: Mobile Recharge Card -->
-        <div class="col-md-6 d-flex">
-          <div class="p-3 w-100 d-flex flex-column justify-content-center">
-            <div class="card border-0 bg-white">
-              <div class="card-title">
-                <h2 class="text-center pt-4">Mobile Recharge</h2>
+
+  <!-- Team Members Section -->
+  <section class="team-section">
+    <div class="content-container">
+      <div class="team-heading" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Our Leadership Team</h2>
+        <p>Meet the visionaries behind Mobi-Comm Service who are driving innovation and excellence in digital connectivity</p>
+      </div>
+      
+      <div class="row">
+        <!-- Team Member 1 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+          <div class="team-card">
+            <div class="team-image">
+              <img src="/Images/rajiv.jpg" alt="Rajiv Sharma">
+            </div>
+            <div class="team-info">
+              <h4>Rajiv Sharma</h4>
+              <p class="position">Chief Executive Officer</p>
+              <p class="bio">With over 15 years of experience in the telecom industry, Rajiv leads our company with vision and strategic insight, driving innovation and growth.</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-envelope"></i></a>
               </div>
-              <hr />
-              <div class="card-body">
-                <h4 class="card-text">Mobile number</h4>
-                <form>
-                  <div class="mb-3">
-                    <input type="tel" id="mobile_num" class="form-control" placeholder="Enter Mobile Number" required>
-                    <small class="text-danger" id="mobileError"></small>
-                  </div>
-                  <div class="text-center">
-                    <button type="button" id="continueButton" class="btn btn-secondary fw-bold w-100">Continue</button>
-                  </div>
-                </form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Team Member 2 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <div class="team-card">
+            <div class="team-image">
+              <img src="/Images/priya.jpg" alt="Priya Patel">
+            </div>
+            <div class="team-info">
+              <h4>Priya Patel</h4>
+              <p class="position">Chief Technology Officer</p>
+              <p class="bio">Priya oversees our technological infrastructure and development, ensuring our platform remains at the cutting edge of digital innovation.</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Team Member 3 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+          <div class="team-card">
+            <div class="team-image">
+              <img src="/Images/vikram.jpg" alt="Vikram Mehta">
+            </div>
+            <div class="team-info">
+              <h4>Vikram Mehta</h4>
+              <p class="position">Chief Marketing Officer</p>
+              <p class="bio">Vikram leads our marketing initiatives with creativity and data-driven strategies.</p> <br>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-envelope"></i></a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="content-container">
+      <div class="faq-heading" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our services and mobile recharge process</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="accordion" id="faqAccordion">
+            <!-- FAQ Item 1 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  How do I recharge my mobile number?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  To recharge your mobile number, simply enter your number on our platform and click "Continue." You'll be prompted to enter your email address, after which you can browse available plans. Select a plan that suits your needs, proceed to payment using your preferred method (UPI, card, net banking, or digital wallet), and upon successful payment, you'll receive a confirmation.
+                </div>
+              </div>
+            </div>
+            
+            <!-- FAQ Item 2 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Which mobile operators do you support?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We support all major mobile operators in the country, including but not limited to Airtel, Jio, Vi (Vodafone Idea), and BSNL. Our platform is continuously updated to include the latest plans and offers from all supported operators.
+                </div>
+              </div>
+            </div>
+            
+            <!-- FAQ Item 3 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  How long does it take for the recharge to be processed?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Most recharges are processed instantly, and you should see the benefits reflected on your mobile number within seconds to a few minutes. In rare cases, it might take up to 30 minutes due to network congestion or technical issues with the operator. If your recharge isn't processed within 30 minutes, please contact our customer support.
+                </div>
+              </div>
+            </div>
+            
+            <!-- FAQ Item 4 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  What payment methods do you accept?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We accept a wide range of payment methods for your convenience, including UPI (Google Pay, PhonePe, Paytm, etc.), credit/debit cards, net banking, and digital wallets. All transactions are secured with industry-standard encryption to ensure your financial information remains safe.
+                </div>
+              </div>
+            </div>
+            
+            <!-- FAQ Item 5 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  How can I contact customer support?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Our customer support team is available 24/7 to assist you. You can reach us through email at support@mobicomm.com, call our toll-free number at 1800-123-4567, or use the live chat feature on our website. We aim to respond to all queries within 2 hours during business hours and within 12 hours during off-hours.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Email Modal -->
   <div class="modal fade" id="emailCard" tabindex="-1" aria-labelledby="emailCardLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Email</h4>
@@ -232,81 +1143,192 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
               <input type="email" id="email" class="form-control" placeholder="Enter your Email" required>
               <small class="text-danger" id="emailError"></small>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" id="planButton" class="btn btn-secondary fw-bold">Continue</button>
+          <button type="button" id="planButton" class="btn">Continue</button>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
-    document.getElementById('continueButton').addEventListener('click', function () {
-      const mobileNumber = document.getElementById('mobile_num').value.trim();
-      const mobileError = document.getElementById('mobileError');
-      const mobilePattern = /^[0-9]{10}$/;
-      if (!mobilePattern.test(mobileNumber)) {
-        mobileError.textContent = 'Please enter a valid 10-digit mobile number.';
-      } else {
-        mobileError.textContent = '';
-        var emailModal = new bootstrap.Modal(document.getElementById('emailCard'));
-        emailModal.show();
-      }
-    });
-    document.getElementById('planButton').addEventListener('click', function () {
-      const email = document.getElementById('email').value.trim();
-      const emailError = document.getElementById('emailError');
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        emailError.textContent = 'Please enter a valid email address.';
-      } else {
-        emailError.textContent = '';
-        window.location.href = 'HomePage.html';
-      }
-    });
-  </script>
-  <br>
-
   <!-- Footer -->
   <footer>
-    <!-- Footer Top -->
     <div class="footer-top">
       <div class="content-container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <h5>Mobi-Comm Service Pvt Ltd</h5>
             <p>Connecting People, Anytime, Anywhere.</p>
+            <div class="footer-social-icons">
+              <a href="#" class="footer-social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="footer-social-icon"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="footer-social-icon"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="footer-social-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             <h5>Quick Links</h5>
             <ul>
               <li><a href="About.html">About Us</a></li>
               <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
               <li><a href="#">Refund Policy</a></li>
             </ul>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
             <h5>Connect With Us</h5>
             <p>Follow us on social media for the latest updates.</p>
-            <a href="#" class="me-2 text-white"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="me-2 text-white"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="me-2 text-white"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <!-- Newsletter Signup Section -->
+        <div class="newsletter-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <h5>Subscribe to Our Newsletter</h5>
+          <p>Get the latest updates and exclusive offers delivered straight to your inbox.</p>
+          <form action="#" class="newsletter-form" onsubmit="handleSubscription(event)">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+          <div id="subscription-message" class="subscription-message" style="display:none;">
+            Subscribed! You will receive email notifications with our latest news and updates.
+          </div>
+          <div class="newsletter-extra mt-2">
+            <p>
+              We value your privacy and promise not to spam your inbox. As a subscriber, you'll get exclusive insights, early access to offers, and behind-the-scenes updates.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="content-container">
         <p class="mb-0">&copy; 2025 Mobi-Comm Service Pvt Ltd. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Initialize AOS for scroll animations
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+      
+      // Mobile Recharge and Email Modal Handling
+      const mobileInput = document.getElementById("mobile_num");
+      const mobileError = document.getElementById("mobileError");
+      const continueButton = document.getElementById("continueButton");
+      const emailModal = new bootstrap.Modal(document.getElementById("emailCard"));
+      
+      // Add input animation
+      mobileInput.addEventListener("focus", function() {
+        this.parentElement.classList.add("focused");
+      });
+      
+      mobileInput.addEventListener("blur", function() {
+        if (this.value.trim() === "") {
+          this.parentElement.classList.remove("focused");
+        }
+      });
+      
+      // Button animation on hover
+      continueButton.addEventListener("mouseover", function() {
+        this.classList.add("pulse");
+      });
+      
+      continueButton.addEventListener("mouseout", function() {
+        this.classList.remove("pulse");
+      });
+      
+      // Validation and modal handling
+      continueButton.addEventListener('click', function () {
+        const mobileNumber = mobileInput.value.trim();
+        const mobilePattern = /^[0-9]{10}$/;
+        
+        // Add loading animation
+        this.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+          if (!mobilePattern.test(mobileNumber)) {
+            mobileError.textContent = 'Please enter a valid 10-digit mobile number.';
+            mobileInput.classList.add("is-invalid");
+            this.innerHTML = 'Continue';
+            this.disabled = false;
+          } else {
+            mobileError.textContent = '';
+            mobileInput.classList.remove("is-invalid");
+            this.innerHTML = 'Continue';
+            this.disabled = false;
+            emailModal.show();
+          }
+        }, 1000);
+      });
+      
+      const emailInput = document.getElementById("email");
+      const emailError = document.getElementById("emailError");
+      const planButton = document.getElementById("planButton");
+      
+      planButton.addEventListener('click', function () {
+        const email = emailInput.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        // Add loading animation
+        this.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+          if (!emailPattern.test(email)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailInput.classList.add("is-invalid");
+            this.innerHTML = 'Continue';
+            this.disabled = false;
+          } else {
+            emailError.textContent = '';
+            emailInput.classList.remove("is-invalid");
+            window.location.href = 'HomePage.html';
+          }
+        }, 1000);
+      });
+      
+      // Add floating animation to team cards
+      const teamCards = document.querySelectorAll('.team-card');
+      teamCards.forEach((card, index) => {
+        card.style.animation = `float 3s ease-in-out ${index * 0.2}s infinite`;
+      });
+    });
+    
+    // Newsletter Subscription Function
+    function handleSubscription(event) {
+      event.preventDefault();
+      const subscriptionMessage = document.getElementById('subscription-message');
+      const submitButton = event.target.querySelector('button');
+      
+      // Add loading state
+      submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Subscribing...';
+      submitButton.disabled = true;
+      
+      // Simulate subscription process
+      setTimeout(() => {
+        subscriptionMessage.style.display = 'block';
+        subscriptionMessage.innerHTML = 'Subscribed! You will receive email notifications with our latest news and updates.';
+        
+        // Reset form
+        event.target.reset();
+        submitButton.innerHTML = 'Subscribe';
+        submitButton.disabled = false;
+        
+        // Add animation to subscription message
+        subscriptionMessage.style.animation = 'fadeInUp 0.5s ease-out';
+      }, 1500);
+    }
+  </script>
 </body>
 </html>

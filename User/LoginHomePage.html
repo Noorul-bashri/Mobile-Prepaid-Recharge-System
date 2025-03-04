@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login Page</title>
+  <title>Login Home Page</title>
   <!-- Bootstrap CSS & Icons -->
   <link 
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -11,117 +11,535 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous"
   />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  />
-  <!-- Bootstrap JS Bundle -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-  ></script>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/main.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS (Animate On Scroll) library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .content-container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      width: 100%;
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --accent-color: #4895ef;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --success-color: #4cc9f0;
+      --warning-color: #f72585;
+      --info-color: #4361ee;
+      --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      --hover-transform: translateY(-5px);
     }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .preloader .spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     /* Top Header Banner with overlay */
     header.banner {
       position: relative;
-      background: url('../Images/backgrounf.jpeg') no-repeat center center;
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
       background-size: cover;
       height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
+
     header.banner::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3QgaWQ9InBhdHRlcm4tYmFja2dyb3VuZCIgd2lkdGg9IjQwMCUiIGhlaWdodD0iNDAwJSIgZmlsbD0icmdiYSg2NywgOTcsIDIzOCwgMC4xKSI+PC9yZWN0PjxjaXJjbGUgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIgY3g9IjIwIiBjeT0iMjAiIHI9IjEiPjwvY2lyY2xlPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSI+PC9yZWN0Pjwvc3ZnPg==');
+      opacity: 0.8;
       z-index: 1;
     }
+
     header.banner .banner-content {
       position: relative;
       z-index: 2;
     }
+
     header.banner .banner-content h1 {
-      font-size: 3rem;
-      font-weight: bold;
+      font-size: 2.5rem;
+      font-weight: 700;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
+
     header.banner .banner-content p {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       margin-bottom: 1rem;
       color: white;
+      max-width: 600px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
+
+    /* Floating elements animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
     /* Plan List Bar Styling */
     .plan-list {
-      background: linear-gradient(135deg, #f6f9fc, #e9eff5);
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin: 1rem 0;
+      background: white;
+      border-radius: 15px;
+      padding: 0.8rem 1.5rem;
+      box-shadow: var(--card-shadow);
+      margin: 1.5rem 0;
       overflow-x: auto;
       white-space: nowrap;
+      position: relative;
+      z-index: 10;
     }
+
+    .plan-list::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .plan-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .plan-list::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 10px;
+    }
+
     .plan-list li {
       display: inline-block;
-      margin-right: 1rem;
+      margin-right: 0.8rem;
     }
+
     .plan-link {
-      color: #2d2d2d;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
+      color: var(--dark-color);
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
       border-radius: 50px;
       text-decoration: none;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
+
     .plan-link:hover {
-      background: #2d2d2d;
-      color: #fff;
-      transform: translateY(-3px);
+      background: var(--primary-color);
+      color: white;
+      transform: var(--hover-transform);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
     }
+
     .plan-link.active {
-      background: #2d2d2d;
-      color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transform: translateY(-2px);
+      background: var(--primary-color);
+      color: white;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
     }
-    /* Equal height for cards in the grid */
-    .row.row-cols-1.row-cols-md-2.g-4 > .col {
+
+    /* User Profile Card */
+    .user-profile-card {
+      background: white;
+      border-radius: 15px;
+      padding: 1rem 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .user-profile-card:hover {
+      transform: var(--hover-transform);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Cards Styling */
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: var(--hover-transform);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .card-title {
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+
+    /* Usage Cards - Equal Height */
+    .usage-card {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Data Usage Card */
+    .data-usage-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(67, 97, 238, 0.1);
+      z-index: 0;
+    }
+
+    .data-usage-card::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(67, 97, 238, 0.1);
+      z-index: 0;
+    }
+
+    /* Progress Bar Animation */
+    .progress {
+      height: 10px;
+      border-radius: 5px;
+      background-color: #e9ecef;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress-bar {
+      transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 5px;
+    }
+
+    /* Current Plan Card */
+    .current-plan-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIj48ZGVmcz48cGF0dGVybiBpZD0icGF0dGVybiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgNDAgNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IGlkPSJwYXR0ZXJuLWJhY2tncm91bmQiIHdpZHRoPSI0MDAlIiBoZWlnaHQ9IjQwMCUiIGZpbGw9InJnYmEoNjcsIDk3LCAyMzgsIDAuMDUpIj48L3JlY3Q+PGNpcmNsZSBmaWxsPSJyZ2JhKDY3LCA5NywgMjM4LCAwLjEpIiBjeD0iMjAiIGN5PSIyMCIgcj0iMSI+PC9jaXJjbGU+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIj48L3JlY3Q+PC9zdmc+');
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    /* History Cards */
+    .history-card {
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .history-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn-outline-primary:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    /* Settings Modal Animation */
+    .modal.fade .modal-dialog {
+      transition: transform 0.3s ease-out, opacity 0.3s ease;
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    .modal.show .modal-dialog {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-content {
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #f8f9fa;
+      padding: 3rem 0 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    footer h5 {
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: var(--dark-color);
+    }
+
+    footer ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer ul li a {
+      color: #6c757d;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    footer .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    footer .social-icons a:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    /* Newsletter Form */
+    .newsletter-form {
       display: flex;
-      align-items: stretch;
+      margin-top: 1rem;
     }
-    .row.row-cols-1.row-cols-md-2.g-4 > .col > .card {
-      flex: 1 1 auto;
+
+    .newsletter-form input {
+      flex: 1;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 50px 0 0 50px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .newsletter-form button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 0 50px 50px 0;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--secondary-color);
+    }
+
+    /* Subscription Message */
+    .subscription-message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      background-color: rgba(76, 201, 240, 0.1);
+      border-left: 3px solid var(--success-color);
+      color: var(--dark-color);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header.banner {
+        height: 200px;
+      }
+      
+      header.banner .banner-content h1 {
+        font-size: 2rem;
+      }
+      
+      .user-profile-card {
+        margin-bottom: 1rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input {
+        border-radius: 50px;
+        margin-bottom: 0.5rem;
+      }
+      
+      .newsletter-form button {
+        border-radius: 50px;
+        width: 100%;
+      }
+    }
+
+    /* Pulse Animation for Notifications */
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+      }
+    }
+
+    /* Shimmer Loading Effect */
+    .shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    /* Notification Badge */
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--warning-color);
+      color: white;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
     }
   </style>
 </head>
-<body class="bg-white">
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="spinner"></div>
+  </div>
+
   <!-- Top Header Banner -->
   <header class="banner">
-    <div class="content-container banner-content">
-      <h1>Mobi-Comm Service Pvt Ltd</h1>
-      <p>Empowering the future of digital communication with seamless connectivity and innovative solutions.</p>
+    <div class="banner-content animate__animated animate__fadeIn">
+      <h1 class="animate__animated animate__fadeInDown">Mobi-Comm Service</h1>
+      <p class="animate__animated animate__fadeInUp">Empowering the future of digital communication with seamless connectivity and innovative solutions.</p>
     </div>
   </header>
   
-  <div class="container-fluid bg-white">
-    <nav class="navbar navbar-expand-sm">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="../Images/logo.jpeg" alt="Logo" style="width:50px;" class="rounded-circle">
+  <!-- Navbar with User Profile -->
+  <div class="container-fluid bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-sm py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle me-2" style="width: 40px; height: 40px;">
+            <i class="bi bi-phone text-white"></i>
+          </div>
+          <span class="fw-bold text-primary">Mobi-Comm</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
           <span class="navbar-toggler-icon"></span>
@@ -129,29 +547,50 @@
         <div class="collapse navbar-collapse" id="mynavbar">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link text-black" href="About.html"><b>About Us</b></a>
+              <a class="nav-link text-dark" href="About.html"><b>About Us</b></a>
             </li>
+          
           </ul>
-          <!-- Profile Dropdown without Arrow Icon -->
-          <form class="d-flex align-items-center text-black">
-            <div class="dropdown">
-              <!-- Removed the separate arrow icon; only the person icon remains -->
-              <a class="nav-link dropdown-toggle d-flex align-items-center"
-                 href="#"
-                 id="accountDropdown"
-                 role="button"
-                 data-bs-toggle="dropdown"
-                 aria-expanded="false">
-                <i class="bi bi-person-circle fs-4 text-black"></i>
+          <!-- User Profile Section -->
+          <div class="d-flex align-items-center">
+            <div class="user-profile-card me-3 animate__animated animate__fadeInRight">
+              <div class="d-flex align-items-center">
+                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+                  <i class="bi bi-person-fill text-white"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold" id="userName">User Name</h6>
+                  <small class="text-muted" id="userNumber">User Number</small>
+                </div>
+              </div>
+            </div>
+            <!-- Notification Icon -->
+            <div class="me-3 position-relative">
+              <a href="#" class="btn btn-light rounded-circle" data-bs-toggle="tooltip" title="Notifications">
+                <i class="bi bi-bell"></i>
+                <span class="notification-badge pulse">2</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                <li><a class="dropdown-item" href="account.html">My Account</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</a></li>
+            </div>
+            <!-- Settings Dropdown -->
+            <div class="dropdown">
+              <a class="btn btn-light rounded-circle" href="#" id="settingsDropdown" role="button" data-bs-toggle="dropdown">
+                <i class="bi bi-gear"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 mt-2">
+                <li>
+                  <a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                    <i class="bi bi-person-circle me-2"></i> Edit Profile
+                  </a>
+                </li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#" id="logoutLink">Sign Out</a></li>
+                <li>
+                  <a class="dropdown-item py-2" href="#" id="logoutLink">
+                    <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+                  </a>
+                </li>
               </ul>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </nav>
@@ -159,36 +598,55 @@
 
   <!-- Settings Modal -->
   <div class="modal fade" id="settingsModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Settings</h5>
+          <h5 class="modal-title fw-bold"><i class="bi bi-person-circle me-2"></i>Edit Profile</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="profileForm">
             <div class="mb-3">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-control" value="John Doe">
+              <label class="form-label fw-medium">Name</label>
+              <input type="text" class="form-control rounded-pill" id="profileName" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" value="johndoe@example.com">
+              <label class="form-label fw-medium">Email</label>
+              <input type="email" class="form-control rounded-pill" id="profileEmail" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Phone</label>
-              <input type="text" class="form-control" value="+1 234 567 890">
+              <label class="form-label fw-medium">Phone</label>
+              <input type="text" class="form-control rounded-pill" id="profilePhone" readonly>
             </div>
-            <button type="submit" class="btn btn-secondary text-black fw-bold">Save Changes</button>
+            <button type="submit" class="btn btn-primary w-100">Save Changes</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Welcome Banner -->
+  <div class="container mt-4">
+    <div class="card bg-primary text-white overflow-hidden animate__animated animate__fadeIn" data-aos="fade-up">
+      <div class="card-body p-4">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h4 class="fw-bold mb-2">Welcome back, <span id="welcomeName">User</span>!</h4>
+            <p class="mb-0">Your account is active and your services are running smoothly.</p>
+          </div>
+          <div class="col-md-4 text-end">
+            <div class="floating">
+              <i class="bi bi-shield-check" style="font-size: 3rem;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Plan List Bar -->
-  <div class="content-container" id="planlist">
-    <ul class="plan-list list-inline">
+  <div class="container" id="planlist">
+    <ul class="plan-list list-inline animate__animated animate__fadeInUp" data-aos="fade-up">
       <li class="list-inline-item"><a href="PopularPlans.html" class="plan-link">Popular Plans</a></li>
       <li class="list-inline-item"><a href="ValidityPlans.html" class="plan-link">Validity Plans</a></li>
       <li class="list-inline-item"><a href="DataPlans.html" class="plan-link">Data Plans</a></li>
@@ -197,112 +655,589 @@
       <li class="list-inline-item"><a href="TopupPlans.html" class="plan-link">Topup Plans</a></li>
     </ul>
   </div>
-  <br>
 
-  <!-- Card Section Container -->
-  <div class="container p-4 mb-5">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col">
-        <div class="card bg-white">
-          <div class="card-body">
-            <h4 class="card-title">Data Usage</h4>
-            <h4 class="card-title fw-bold"><strong>1.39GB</strong> left of 1.50GB</h4>
-            <hr>
-            <div class="progress">
-              <div class="progress-bar bg-info" style="width:70%"></div>
+  <!-- Usage Cards Section -->
+  <div class="container p-4">
+    <div class="row">
+      <!-- Data Usage Card -->
+      <div class="col-md-6 mb-4">
+        <div class="card usage-card data-usage-card animate__animated animate__fadeInLeft h-100" data-aos="fade-right">
+          <div class="card-body p-4 d-flex flex-column">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-info bg-opacity-10 rounded-circle p-2 me-3">
+                <i class="bi bi-wifi text-info" style="font-size: 1.5rem;"></i>
+              </div>
+              <div>
+                <h5 class="card-title mb-0">Data Usage</h5>
+                <small class="text-muted">Daily consumption</small>
+              </div>
             </div>
-            <p class="text-end">Renews in 13 hours</p>
+            <h4 class="card-title fw-bold">
+              <span id="dataLeft" class="text-primary"></span> left of <span id="totalData"></span>
+            </h4>
+            <div class="progress">
+              <div class="progress-bar" id="dataProgress" style="width:0%"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <small class="text-muted">Used: <span id="dataUsed">0.11GB</span></small>
+              <p class="mb-0 text-end" id="dataRenewal"></p>
+            </div>
+            <div class="mt-auto pt-3">
+              <a href="DataPlans.html" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-plus-circle me-1"></i> Add Data
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card bg-white">
-          <div class="card-body">
-            <h4 class="card-title">Current Plan</h4>
-            <h4 class="card-title fw-bold"><strong>Rs.299</strong></h4>
+      <!-- Current Plan Card -->
+      <div class="col-md-6 mb-4">
+        <div class="card usage-card current-plan-card animate__animated animate__fadeInRight h-100" data-aos="fade-left">
+          <div class="card-body p-4 d-flex flex-column">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
+                <i class="bi bi-calendar-check text-primary" style="font-size: 1.5rem;"></i>
+              </div>
+              <div>
+                <h5 class="card-title mb-0">Current Plan</h5>
+                <small class="text-muted">Active subscription</small>
+              </div>
+            </div>
+            <h4 class="card-title fw-bold text-primary" id="currentPlanPrice"></h4>
+            <h5 class="card-subtitle mb-2" id="currentPlanName"></h5>
             <hr>
-            <p>Recharge On: 9th February, 2025</p>
-            <p>Expires On: 7th March, 2025</p>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-calendar-event me-2 text-muted"></i>
+              <p class="mb-0" id="rechargeDate"></p>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-calendar-x me-2 text-muted"></i>
+              <p class="mb-0" id="expiryDate"></p>
+            </div>
+            <div class="mt-auto pt-3">
+              <button class="btn btn-primary btn-sm" id="rechargeNowBtn">
+                <i class="bi bi-arrow-repeat me-1"></i> Recharge Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <br><br>
 
-  <!-- Footer Section with Newsletter Subscription -->
-  <footer>
-    <div class="footer-top">
-      <div class="content-container">
-        <div class="row">
-          <div class="col-md-4">
-            <h5>Mobi-Comm Service Pvt Ltd</h5>
-            <p>Connecting People, Anytime, Anywhere.</p>
-          </div>
-          <div class="col-md-4">
-            <h5>Quick Links</h5>
-            <ul>
-              <li><a href="About.html">About Us</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms &amp; Conditions</a></li>
-              <li><a href="#">Refund Policy</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h5>Connect With Us</h5>
-            <p>Follow us on social media for the latest updates.</p>
-            <a href="#" class="me-2"><i class="bi bi-facebook icon-yellow"></i></a>
-            <a href="#" class="me-2"><i class="bi bi-twitter icon-yellow"></i></a>
-            <a href="#" class="me-2"><i class="bi bi-instagram icon-yellow"></i></a>
-            <a href="#"><i class="bi bi-linkedin icon-yellow"></i></a>
+  <!-- Quick Actions Section -->
+  <div class="container mb-4">
+    <h5 class="fw-bold mb-3" data-aos="fade-up">Quick Actions</h5>
+    <div class="row g-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-6 col-md-3">
+        <div class="card h-100 text-center animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="bg-primary bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+              <i class="bi bi-credit-card text-primary" style="font-size: 1.5rem;"></i>
+            </div>
+            <h6 class="fw-bold">Recharge</h6>
+            <p class="small text-muted mb-0">Quick recharge</p>
           </div>
         </div>
-        <!-- Newsletter Signup Section -->
-        <div class="newsletter-section mt-4">
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card h-100 text-center animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="bg-info bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+              <i class="bi bi-gift text-info" style="font-size: 1.5rem;"></i>
+            </div>
+            <h6 class="fw-bold">Offers</h6>
+            <p class="small text-muted mb-0">Special deals</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card h-100 text-center animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="bg-success bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+              <i class="bi bi-headset text-success" style="font-size: 1.5rem;"></i>
+            </div>
+            <h6 class="fw-bold">Support</h6>
+            <p class="small text-muted mb-0">Get help</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card h-100 text-center animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="bg-warning bg-opacity-10 rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+              <i class="bi bi-graph-up text-warning" style="font-size: 1.5rem;"></i>
+            </div>
+            <h6 class="fw-bold">Usage</h6>
+            <p class="small text-muted mb-0">Track usage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction History Section -->
+  <div class="container mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-up">
+      <h5 class="fw-bold mb-0">Transaction History</h5>
+      <button class="btn btn-primary" id="viewHistoryBtn">
+        <i class="bi bi-clock-history me-2"></i> View History
+      </button>
+    </div>
+    <div id="historyContainer" class="row" style="display: none;">
+      <!-- Transaction history cards will be injected here -->
+    </div>
+  </div>
+
+  <!-- Recommended Plans Section -->
+  <div class="container mb-5">
+    <h5 class="fw-bold mb-3" data-aos="fade-up">Recommended for You</h5>
+    <div class="row g-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-4">
+        <div class="card h-100 animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">Entertainment Pack</h5>
+              <span class="badge bg-primary rounded-pill">Best Value</span>
+            </div>
+            <h4 class="fw-bold text-primary">Rs. 499</h4>
+            <p class="card-text">
+              <i class="bi bi-wifi me-2"></i> 1.5 GB/Day<br>
+              <i class="bi bi-calendar-check me-2"></i> 28 Days<br>
+              <i class="bi bi-film me-2"></i> Netflix & Amazon Prime
+            </p>
+            <button class="btn btn-primary w-100 mt-3">Select Plan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">Annual Plan</h5>
+              <span class="badge bg-info rounded-pill">Popular</span>
+            </div>
+            <h4 class="fw-bold text-primary">Rs. 2999</h4>
+            <p class="card-text">
+              <i class="bi bi-wifi me-2"></i> 2.5 GB/Day<br>
+              <i class="bi bi-calendar-check me-2"></i> 365 Days<br>
+              <i class="bi bi-telephone me-2"></i> Unlimited Calls & SMS
+            </p>
+            <button class="btn btn-primary w-100 mt-3">Select Plan</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 animate__animated animate__fadeIn">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold">Data Booster</h5>
+              <span class="badge bg-success rounded-pill">New</span>
+            </div>
+            <h4 class="fw-bold text-primary">Rs. 299</h4>
+            <p class="card-text">
+              <i class="bi bi-wifi me-2"></i> 10 GB<br>
+              <i class="bi bi-calendar-check me-2"></i> 30 Days<br>
+              <i class="bi bi-speedometer2 me-2"></i> No Speed Restrictions
+            </p>
+            <button class="btn btn-primary w-100 mt-3">Select Plan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5>Mobi-Comm Service Pvt Ltd</h5>
+          <p class="text-muted">Connecting People, Anytime, Anywhere.</p>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 mb-4">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
           <h5>Subscribe to Our Newsletter</h5>
-          <p>Get the latest updates and exclusive offers delivered straight to your inbox.</p>
-          <form action="#" class="newsletter-form" onsubmit="handleSubscription(event)">
+          <p class="text-muted">Get the latest updates and exclusive offers delivered straight to your inbox.</p>
+          <form class="newsletter-form" onsubmit="handleSubscription(event)">
             <input type="email" placeholder="Enter your email" required>
-            <button type="submit" class="btn btn-famera">Subscribe</button>
+            <button type="submit">Subscribe</button>
           </form>
           <div id="subscription-message" class="subscription-message" style="display:none;">
             Subscribed! You will receive email notifications with our latest news and updates.
           </div>
-          <div class="newsletter-extra mt-2">
-            <p>
-              We value your privacy and promise not to spam your inbox. As a subscriber, you’ll get exclusive insights, early access to offers, and behind-the-scenes updates.
-            </p>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="content-container">
-        <p class="mb-0">&copy; 2025 Mobi-Comm Service Pvt Ltd. All Rights Reserved.</p>
+      <div class="text-center mt-4 pt-3 border-top">
+        <p class="mb-0 text-muted">&copy; 2025 Mobi-Comm Service Pvt Ltd. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+          crossorigin="anonymous"></script>
+  
+  <!-- JavaScript for OTP Generation & Verification -->
   <script>
-    // Logout link functionality
-    document.addEventListener("DOMContentLoaded", function () {
-      const logoutLink = document.getElementById("logoutLink");
-      if (logoutLink) {
-        logoutLink.addEventListener("click", function (event) {
-          event.preventDefault(); 
-          alert("Logout successful! Redirecting to the home page...");
-          window.location.href = "HomePage.html"; 
+    // Initialize AOS
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+      
+      // Initialize tooltips
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      });
+      
+      // Hide preloader after page loads
+      setTimeout(function() {
+        document.getElementById('preloader').style.opacity = '0';
+        setTimeout(function() {
+          document.getElementById('preloader').style.display = 'none';
+        }, 500);
+      }, 1000);
+      
+      loadUserData();
+      
+      // Add event listener for recharge button
+      document.getElementById('rechargeNowBtn').addEventListener('click', function() {
+        // Store current plan details in localStorage for payment page
+        const currentPlan = {
+          name: document.getElementById('currentPlanName').textContent,
+          price: document.getElementById('currentPlanPrice').textContent,
+          validity: document.getElementById('expiryDate').textContent.replace('Expires On: ', ''),
+          data: document.getElementById('totalData').textContent
+        };
+        
+        localStorage.setItem('selectedPlan', JSON.stringify(currentPlan));
+        
+        // Store user details for payment page
+        const userData = {
+          name: document.getElementById('userName').textContent,
+          phone: document.getElementById('userNumber').textContent
+        };
+        
+        localStorage.setItem('userData', JSON.stringify(userData));
+        
+        // Redirect to payment page
+        window.location.href = 'PaymentPage.html';
+      });
+    });
+
+    // Function to fetch user data and update the UI with the logged-in user's details
+    async function loadUserData() {
+      try {
+        const response = await fetch('/JSON/userNumber.json');
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        const data = await response.json();
+        const userNumber = sessionStorage.getItem('userNumber');
+        const user = data.users.find(u => u.phone === userNumber);
+        if (user) {
+          // Update profile card and settings form
+          document.getElementById('userName').textContent = user.name;
+          document.getElementById('welcomeName').textContent = user.name;
+          document.getElementById('userNumber').textContent = user.phone;
+          document.getElementById('profileName').value = user.name;
+          document.getElementById('profileEmail').value = user.email;
+          document.getElementById('profilePhone').value = user.phone;
+          
+          // Use the first transaction (if available) as the current plan
+          if (user.transactions && user.transactions.length > 0) {
+            const latestTransaction = user.transactions[0];
+            
+            // Get plan details from the appropriate JSON file based on plan type
+            let planDetails = null;
+            
+            if (latestTransaction.plan.includes('Popular')) {
+              await fetchPlanDetails('/JSON/popularPlans.json', 'plans', latestTransaction);
+            } else if (latestTransaction.plan.includes('Validity')) {
+              await fetchPlanDetails('/JSON/validityPlans.json', 'plans', latestTransaction);
+            } else if (latestTransaction.plan.includes('Entertainment')) {
+              await fetchPlanDetails('/JSON/entertainmentPlans.json', null, latestTransaction);
+            } else if (latestTransaction.plan.includes('Annual')) {
+              await fetchPlanDetails('/JSON/AnnualPlans.json', 'annualPlans', latestTransaction);
+            } else if (latestTransaction.plan.includes('Topup')) {
+              await fetchPlanDetails('/JSON/topupPlans.json', 'topupPlans', latestTransaction);
+            } else if (latestTransaction.plan.includes('Data')) {
+              await fetchPlanDetails('/JSON/dataPlans.json', null, latestTransaction);
+            }
+            
+            // Display transaction details
+            document.getElementById('currentPlanPrice').textContent = latestTransaction.price || 'N/A';
+            document.getElementById('currentPlanName').textContent = latestTransaction.plan;
+            document.getElementById('rechargeDate').textContent = `Recharge On: ${new Date(latestTransaction.date).toLocaleDateString()}`;
+            document.getElementById('expiryDate').textContent = `Expires On: ${new Date(latestTransaction.expiryDate).toLocaleDateString()}`;
+          }
+          
+          // Simulated data usage details (replace with actual data if available)
+          const totalData = '1.50GB';
+          const dataLeft = '1.39GB';
+          const dataUsed = '0.11GB';
+          const usagePercent = 7; // 7% used (0.11GB of 1.50GB)
+          document.getElementById('totalData').textContent = totalData;
+          document.getElementById('dataLeft').textContent = dataLeft;
+          document.getElementById('dataUsed').textContent = dataUsed;
+          
+          // Animate the progress bar after a short delay
+          setTimeout(() => {
+            document.getElementById('dataProgress').style.width = `${usagePercent}%`;
+          }, 500);
+          
+          document.getElementById('dataRenewal').textContent = `Renews in 13 hours`;
+        } else {
+          console.error('User not found');
+          // Redirect to login if user not found
+          window.location.href = 'login.html';
+        }
+      } catch (error) {
+        console.error('Error loading user data:', error);
+      }
+    }
+    
+    // Function to fetch plan details from JSON files
+    async function fetchPlanDetails(jsonUrl, planArrayKey, transaction) {
+      try {
+        const response = await fetch(jsonUrl);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch plan details from ${jsonUrl}`);
+        }
+        
+        const data = await response.json();
+        let plans = planArrayKey ? data[planArrayKey] : data;
+        
+        // If plans is not an array, make it one (handles different JSON structures)
+        if (!Array.isArray(plans)) {
+          plans = [plans];
+        }
+        
+        // Find the matching plan by price
+        const matchingPlan = plans.find(plan => plan.price === transaction.price);
+        
+        if (matchingPlan) {
+          // Update additional plan details if needed
+          console.log('Found matching plan:', matchingPlan);
+        }
+      } catch (error) {
+        console.error('Error fetching plan details:', error);
+      }
+    }
+
+    // Toggle transaction history view on button click with animation
+    document.getElementById('viewHistoryBtn').addEventListener('click', function() {
+      const historyContainer = document.getElementById('historyContainer');
+      const isHidden = historyContainer.style.display === 'none';
+      
+      if (isHidden) {
+        // First show the container
+        historyContainer.style.display = 'flex';
+        
+        // Then fetch and populate data
+        fetch('/JSON/userNumber.json')
+          .then(response => response.json())
+          .then(data => {
+            const userNumber = sessionStorage.getItem('userNumber');
+            const user = data.users.find(u => u.phone === userNumber);
+            if (user && user.transactions) {
+              historyContainer.innerHTML = ''; // Clear previous entries
+              
+              user.transactions.forEach((transaction, index) => {
+                const card = document.createElement('div');
+                card.className = 'col-md-6 mb-4';
+                
+                // Create a badge based on transaction type
+                let badgeClass = 'bg-primary';
+                if (transaction.plan.includes('Entertainment')) {
+                  badgeClass = 'bg-info';
+                } else if (transaction.plan.includes('Topup')) {
+                  badgeClass = 'bg-warning';
+                } else if (transaction.plan.includes('Data')) {
+                  badgeClass = 'bg-success';
+                }
+                
+                card.innerHTML = `
+                  <div class="card history-card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="card-title fw-bold">${transaction.plan}</h5>
+                        <span class="badge ${badgeClass} rounded-pill">${transaction.price || 'N/A'}</span>
+                      </div>
+                      <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-calendar-date me-2 text-muted"></i>
+                        <p class="mb-0">Date: ${new Date(transaction.date).toLocaleDateString()}</p>
+                      </div>
+                      <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-credit-card me-2 text-muted"></i>
+                        <p class="mb-0">Payment: ${transaction.paymentMode}</p>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-calendar-check me-2 text-muted"></i>
+                        <p class="mb-0">Validity: ${transaction.validity || 'N/A'}</p>
+                      </div>
+                    </div>
+                  </div>
+                `;
+                
+                historyContainer.appendChild(card);
+                
+                // Add animation delay for each card
+                setTimeout(() => {
+                  card.querySelector('.history-card').classList.add('show');
+                }, index * 100);
+              });
+            }
+          })
+          .catch(error => console.error('Error loading transaction history:', error));
+          
+        // Change button text
+        document.getElementById('viewHistoryBtn').innerHTML = '<i class="bi bi-x-circle me-2"></i> Hide History';
+      } else {
+        // Hide with animation
+        const cards = document.querySelectorAll('.history-card');
+        cards.forEach(card => {
+          card.classList.remove('show');
         });
+        
+        // After animation completes, hide the container
+        setTimeout(() => {
+          historyContainer.style.display = 'none';
+          // Reset button text
+          document.getElementById('viewHistoryBtn').innerHTML = '<i class="bi bi-clock-history me-2"></i> View History';
+        }, 300);
       }
     });
 
-    // Newsletter subscription function
+    // Handle profile form submission (updates only the displayed name)
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const updatedProfile = {
+        name: document.getElementById('profileName').value,
+        email: document.getElementById('profileEmail').value,
+        phone: document.getElementById('profilePhone').value
+      };
+      
+      // Update displayed name
+      document.getElementById('userName').textContent = updatedProfile.name;
+      document.getElementById('welcomeName').textContent = updatedProfile.name;
+      
+      // Show success message with animation
+      const modal = bootstrap.Modal.getInstance(document.getElementById('settingsModal'));
+      modal.hide();
+      
+      // Create and show toast notification
+      const toastContainer = document.createElement('div');
+      toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+      toastContainer.style.zIndex = '11';
+      toastContainer.innerHTML = `
+        <div class="toast show animate__animated animate__fadeInUp" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header bg-success text-white">
+            <i class="bi bi-check-circle me-2"></i>
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Profile updated successfully!
+          </div>
+        </div>
+      `;
+      document.body.appendChild(toastContainer);
+      
+      // Remove toast after 3 seconds
+      setTimeout(() => {
+        toastContainer.querySelector('.toast').classList.replace('animate__fadeInUp', 'animate__fadeOutDown');
+        setTimeout(() => {
+          document.body.removeChild(toastContainer);
+        }, 500);
+      }, 3000);
+    });
+
+    // Newsletter subscription handler
     function handleSubscription(event) {
       event.preventDefault();
-      document.getElementById('subscription-message').style.display = 'block';
+      const subscriptionMessage = document.getElementById('subscription-message');
+      subscriptionMessage.style.display = 'block';
+      event.target.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        subscriptionMessage.style.display = 'none';
+      }, 5000);
     }
+
+    // Logout functionality: Remove the stored userNumber and redirect to login.html
+    document.getElementById('logoutLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Create confirmation dialog
+      const confirmDialog = document.createElement('div');
+      confirmDialog.className = 'modal fade';
+      confirmDialog.id = 'logoutConfirmModal';
+      confirmDialog.innerHTML = `
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirm Logout</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to log out?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="confirmLogout">Logout</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(confirmDialog);
+      
+      // Show the modal
+      const modal = new bootstrap.Modal(document.getElementById('logoutConfirmModal'));
+      modal.show();
+      
+      // Handle confirm button click
+      document.getElementById('confirmLogout').addEventListener('click', function() {
+        sessionStorage.removeItem('userNumber');
+        window.location.href = 'login.html';
+      });
+      
+      // Remove modal from DOM after it's hidden
+      document.getElementById('logoutConfirmModal').addEventListener('hidden.bs.modal', function() {
+        document.body.removeChild(confirmDialog);
+      });
+    });
   </script>
-  <br><br>
 </body>
 </html>

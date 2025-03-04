@@ -6,82 +6,180 @@
   <title>Mobi-Comm Service Pvt Ltd.</title>
 
   <!-- Bootstrap CSS & Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-    rel="stylesheet"/>
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-    rel="stylesheet"/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-    rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
 
+  <!-- Google Fonts: Montserrat & Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS Library for scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap JS Bundle -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <link rel="stylesheet" href="/css/main.min.css" />
 
   <style>
-    /* Global container for consistent horizontal spacing */
+    /* Global Styles */
+    :root {
+      --primary-color: #6c63ff;
+      --primary-light: #9d9ade;
+      --primary-dark: #4d44d9;
+      --secondary-color: #55afc1;
+      --accent-color: #ff6b6b;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --bg-light: #f8f9fa;
+      --bg-dark: #343a40;
+      --transition-speed: 0.3s;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background-color: #f9f9f9;
+      scroll-behavior: smooth;
+    }
+
+    /* Container: Provides a consistent left/right gap */
     .content-container {
       max-width: 1140px;
       margin: 0 auto;
       padding: 0 1.5rem;
       width: 100%;
     }
-    /* Top Header Banner with overlay */
+
+    /* Reset default margins on headings and paragraphs */
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    /* Banner with Parallax Effect */
     header.banner {
       position: relative;
       background: url('../Images/backgrounf.jpeg') no-repeat center center;
       background-size: cover;
+      background-attachment: fixed;
       height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
+
     header.banner::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
       z-index: 1;
     }
+
     header.banner .banner-content {
       position: relative;
       z-index: 2;
+      animation: fadeInUp 1s ease-out;
     }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     header.banner .banner-content h1 {
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       color: white;
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
+
     header.banner .banner-content p {
       font-size: 1.25rem;
       margin-bottom: 1rem;
       color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
-    /* Hero Section with integrated Mobile Recharge Card */
+
+    /* Navbar Enhancement */
+    .navbar {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background-color: white;
+    }
+
+    .navbar-brand img {
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover img {
+      transform: scale(1.1);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .navbar .btn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .navbar .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s;
+      z-index: -1;
+    }
+
+    .navbar .btn:hover::before {
+      left: 100%;
+    }
+
+    /* Hero Section with Gradient Background */
     .hero-section {
       position: relative;
-      background: url('../Images/banner1.jpg') no-repeat center center;
+
       background-size: cover;
       min-height: 400px;
       width: 90%;
@@ -90,140 +188,794 @@
       margin: 2rem auto;
       padding: 60px 0;
       text-align: center;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s ease;
     }
+
+    .hero-section:hover {
+      transform: translateY(-5px);
+    }
+
     .hero-section::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.4);
+      background: url('../Images/banner1.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.9;
       z-index: 1;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
       color: white;
+      animation: fadeIn 1.2s ease-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     .hero-content h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
+
     .hero-content p {
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     }
-    /* Mobile Recharge Card */
-    .mobile-recharge-card {
-      max-width: 400px;
-      margin: 20px auto 0;
-      opacity: 90%;
+
+    /* Enhanced Mobile Recharge Card Styling */
+    .validation-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      margin: 20px auto;
+      max-width: 500px;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+      border: none;
+      transition: all 0.3s ease;
     }
-    .mobile-recharge-card .form-control {
-      border-radius: 5px;
-      padding: 0.75rem;
-      font-size: 1rem;
+
+    .validation-card:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
-    .mobile-recharge-card .btn {
-      border-radius: 5px;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-    }
-    .mobile-recharge-card .form-control::placeholder,
-    .mobile-recharge-card .form-control::-webkit-input-placeholder,
-    .mobile-recharge-card .form-control:-ms-input-placeholder {
-      color: black;
-      opacity: 1;
-    }
-    /* Remove hover effect for the Continue button */
-    #continueButton:hover {
-      background-color: rgb(117, 212, 124) !important;
-      box-shadow: none !important;
-      transform: none !important;
-    }
-    /* Offer Card Hover Animation */
-    .offer-card {
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      background-color: #fff;
-    }
-    .offer-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-    /* Why Choose Section Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
+
+    @keyframes fadeIn {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    .why-choose-section {
-      padding: 40px 20px;
-      margin: 50px 0;
-      background-color: #f8f9fa;
+
+    .validation-card .card-header {
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+      color: var(--text-dark);
+      padding: 25px;
+      text-align: center;
+      border-bottom: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .validation-card .card-header::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      animation: shimmer 3s infinite linear;
+    }
+
+    @keyframes shimmer {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .validation-card .card-header h3 {
+      margin: 0;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .validation-card .card-header p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    .validation-card .card-body {
+      padding: 30px;
+    }
+
+    .validation-card .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .validation-card .form-label {
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: block;
+      transition: all 0.3s ease;
+      color: var(--text-dark);
+    }
+
+    .validation-card .form-control {
       border-radius: 10px;
-      animation: fadeInUp 1s ease forwards;
+      padding: 15px;
+      border: 2px solid #e1e1e1;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      background-color: #f8f9fa;
     }
-    /* Feature Circles */
-    .feature-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 0 auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.5rem;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+
+    .validation-card .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(108, 99, 255, 0.25);
+      background-color: white;
     }
-    .feature-blue { background-color: #007bff; }
-    .feature-red { background-color: #dc3545; }
-    .feature-green { background-color: #28a745; }
-    .feature-orange { background-color: #fd7e14; }
-    .feature-blue:hover {
-      background-color: #339cff;
-      transform: scale(1.1);
+
+    .validation-card .form-control:focus + .form-label {
+      color: var(--primary-color);
     }
-    .feature-red:hover {
-      background-color: #ff6677;
-      transform: scale(1.1);
+
+    .validation-card .invalid-feedback {
+      display: none;
+      color: #dc3545;
+      font-size: 0.85rem;
+      margin-top: 8px;
     }
-    .feature-green:hover {
-      background-color: #5cd65c;
-      transform: scale(1.1);
+
+    .validation-card .is-invalid ~ .invalid-feedback {
+      display: block;
+      animation: shake 0.5s ease-in-out;
     }
-    .feature-orange:hover {
-      background-color: #ff9f4d;
-      transform: scale(1.1);
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
     }
-    .why-choose-section img {
-      transition: transform 0.5s ease-in-out;
+
+    .validation-card .btn-validate {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      border: none;
+      padding: 15px 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 15px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      text-transform: uppercase;
     }
-    .why-choose-section img:hover {
-      transform: scale(1.1);
+
+    .validation-card .btn-validate::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: all 0.5s;
     }
-    .why-choose-section img:not(:hover) {
-      transform: scale(1);
+
+    .validation-card .btn-validate:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
     }
-    /* Equal Card Dimensions for Grid */
-    .row.row-cols-1.row-cols-md-2.g-4 > .col {
-      display: flex;
-      align-items: stretch;
+
+    .validation-card .btn-validate:hover::before {
+      left: 100%;
     }
-    .row.row-cols-1.row-cols-md-2.g-4 > .col > .card-container {
-      flex: 1 1 auto;
+
+    .validation-card .btn-validate:active {
+      transform: translateY(1px);
     }
-    .card-container {
+
+    /* Online Prepaid Recharge Section */
+    .prepaid-recharge-section {
+      background-color: white;
+      border-radius: 15px;
+      padding: 40px;
+      margin: 50px auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .prepaid-recharge-section::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+    }
+
+    .prepaid-recharge-section h1 {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .prepaid-recharge-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .prepaid-recharge-section:hover h1::after {
+      width: 100%;
+    }
+
+    .prepaid-recharge-section p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* Why Choose Our Recharge Service Section */
+    .why-choose-section {
+      padding: 60px 40px;
+      margin: 50px 0;
+      background: white;
+      border-radius: 20px;
+      text-align: left;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .why-choose-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    }
+
+    .why-choose-section h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .why-choose-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .why-choose-section p {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Feature Cards in Why Choose Section */
+    .feature-card {
+      text-align: center;
+      transition: all 0.3s ease;
+      padding: 20px;
+      border-radius: 15px;
+      background: white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card img {
+      transition: transform 0.5s ease;
+      border: 5px solid rgba(108, 99, 255, 0.2);
+    }
+
+    .feature-card:hover img {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card p {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .feature-card p::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .feature-card:hover p::after {
+      width: 80%;
+    }
+
+    /* Offer Cards */
+    .offer-card {
+      position: relative;
+      border: none;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      height: 100%;
+      align-items: center;
+      padding: 0;
+    }
+
+    .offer-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(85, 175, 193, 0.05));
+      z-index: -1;
+      border-radius: 20px;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .offer-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      transition: all 0.5s ease;
+    }
+
+    .offer-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .offer-card-content {
+      padding: 20px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .offer-card h4 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      color: var(--text-dark);
+    }
+
+    .offer-card p {
+      font-size: 0.95rem;
+      text-align: center;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    /* Get Offer Button in Offer Cards */
+    .offer-card .btn-get-offer {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .offer-card .btn-get-offer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: all 0.5s;
+      z-index: -1;
+    }
+
+    .offer-card .btn-get-offer:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .offer-card .btn-get-offer:hover::before {
+      left: 100%;
+    }
+
+    /* Carousel Section */
+    .carousel-section {
+      margin: 4rem 0;
+      position: relative;
+    }
+
+    .carousel-section h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .carousel-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* Carousel Arrow Controls */
+    .carousel-control-prev.round, .carousel-control-next.round {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+
+    .carousel-control-prev.round:hover, .carousel-control-next.round:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-control-prev {
+      left: -25px;
+    }
+
+    .carousel-control-next {
+      right: -25px;
+    }
+
+    .carousel-control-prev.round i, .carousel-control-next.round i {
+      font-size: 24px;
+      color: white;
+    }
+
+    /* Footer Enhancement */
+    .footer-top {
+      background: linear-gradient(135deg, #343a40, #212529);
+      padding: 4rem 0 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-top::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    }
+
+    .footer-top h5 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      color: white;
+    }
+
+    .footer-top h5::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 1.5px;
+    }
+
+    .footer-top p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+    }
+
+    .footer-top ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .footer-top ul li {
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-top ul li:hover {
+      transform: translateX(5px);
+    }
+
+    .footer-top ul li a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-top ul li a::before {
+      content: '→';
+      position: absolute;
+      left: -20px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .footer-top ul li a:hover {
+      color: white;
+      padding-left: 20px;
+    }
+
+    .footer-top ul li a:hover::before {
+      opacity: 1;
+      left: 0;
+    }
+
+    /* Social Media Icons */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--primary-color);
+      transform: translateY(-5px);
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      margin-top: 2rem;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 100%;
+      margin-top: 15px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .newsletter-form button {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .newsletter-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .subscription-message {
+      color: #a9b867;
+      margin-top: 1rem;
+      padding: 10px;
+      border-radius: 5px;
+      background: rgba(169, 184, 103, 0.1);
+      text-align: center;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .newsletter-extra p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 15px;
+    }
+
+    .footer-bottom {
+      background: #212529;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 1.25rem 0;
+      position: relative;
+    }
+
+    /* Modal Enhancement */
+    .modal-content {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+      color: var(--text-dark);
+      border-bottom: none;
+      padding: 20px 25px;
+    }
+
+    .modal-title {
+      font-weight: 600;
+    }
+
+    .modal-body {
+      padding: 25px;
+    }
+
+    .modal-footer {
+      border-top: none;
+      padding: 20px 25px;
+    }
+
+    .modal-footer button {
+      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .modal-footer button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header.banner .banner-content h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .carousel-control-prev {
+        left: 0;
+      }
+      
+      .carousel-control-next {
+        right: 0;
+      }
+      
+      .why-choose-section {
+        padding: 40px 20px;
+      }
+      
+      .offer-card {
+        height: auto;
+        margin-bottom: 30px;
+      }
     }
   </style>
 </head>
@@ -258,109 +1010,249 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Mobile Recharge Card -->
-  <div class="hero-section my-5">
+  <!-- Hero Section with Mobile Recharge Card (Updated Styling) -->
+  <div class="hero-section my-5" data-aos="fade-up" data-aos-duration="1000">
     <div class="content-container hero-content">
-      <h2>Unleash the Power of Next-Gen Connectivity</h2> <br>
-      <p>Stay connected around the clock with lightning-fast speed, extensive coverage, and unbeatable reliability.</p> <br> 
-      <!-- Mobile Recharge Card -->
-      <div class="card mobile-recharge-card">
-        <h4 class="card-header text-center bg-secondary">Mobile Recharge</h4>
+      <h2>Unleash the Power of Next-Gen Connectivity</h2>
+      <p>Stay connected around the clock with lightning-fast speed, extensive coverage, and unbeatable reliability.</p>
+      <!-- Updated Mobile Recharge Card -->
+      <div class="validation-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="card-header">
+          <h3>Mobile Recharge</h3>
+          <p class="mb-0">Enter your mobile number to continue</p>
+        </div>
         <div class="card-body">
-          <h6 class="card-text text-start">Mobile Number</h6>
-          <form>
-            <div class="mb-3">
-              <input type="tel" id="mobile_num" class="form-control" placeholder="Enter Mobile Number" required>
-              <div id="mobileError" class="text-danger mt-1"></div>
+          <form id="validationForm" novalidate>
+            <div class="form-group">
+              <label for="mobile_num" class="form-label">Mobile Number</label>
+              <input type="tel" id="mobile_num" class="form-control text-black" placeholder="Enter Mobile Number" required>
+              <div id="mobileError" class="invalid-feedback">
+                Please enter a valid 10-digit mobile number.
+              </div>
             </div>
-            <button type="button" id="continueButton" class="btn btn-secondary w-100 fw-bold">
-              Continue
+            <button type="button" id="continueButton" class="btn btn-validate">
+              <span>Continue</span>
             </button>
           </form>
-        </div> 
+        </div>
       </div>
     </div>
   </div>
-  <br> 
 
+  <br>
   <!-- Online Prepaid Recharge Section -->
   <div class="content-container my-5 px-4">
-    <div class="my-5">
-      <h1 class="text-black">Online Prepaid Recharge</h1> <br>
-      <p class="text-justify">
+    <div class="prepaid-recharge-section" data-aos="fade-up">
+      <h1 class="text-black fw-bold" style="font-size: 2.5rem;">Online Prepaid Recharge</h1>
+      <p class="text-justify mt-3">
         To recharge your mobile number, simply enter your number and select continue to enter your email.
         Browse through available plans and choose one that fits your needs. Proceed with payment using options
         like UPI, debit/credit card, net banking, or digital wallets. Upon successful payment, you'll receive a confirmation.
       </p>
     </div>
-    <br> 
-    <!-- Why Choose Our Recharge Service Section -->
-    <div class="my-5 why-choose-section">
+  </div>
+
+  <br>
+
+  <!-- Why Choose Our Recharge Service Section -->
+  <div class="content-container my-5 px-4">
+    <div class="why-choose-section" data-aos="fade-up">
       <h1 class="text-black">Why Choose Our Recharge Service?</h1>
-      <p class="text-justify">
+      <p class="text-justify mt-3">
         Experience reliable network coverage, exclusive deals, and secure payment options. With Mobi-Comm Service Pvt Ltd,
         enjoy lightning-fast recharges, hassle-free transactions, and round-the-clock customer support—ensuring you stay connected.
       </p>
-      <br>
-      <div class="row text-center g-4">
-        <div class="col-md-3">
-          <img src="../Images/reliable.jpg" alt="Reliable Network" style="height: 200px; width: 200px;" class="rounded-pill">
-          <p class="pt-3">Reliable Network</p>
-        </div>
-        <div class="col-md-3">
-          <img src="../Images/deal.jpeg" alt="Exclusive Deals" style="height: 200px; width: 200px;" class="rounded-pill">
-          <p class="pt-3">Exclusive Deals</p>
-        </div>
-        <div class="col-md-3">
-          <img src="../Images/secure.jpeg" alt="Secure Payment" style="height: 200px; width: 200px;" class="rounded-pill">
-          <p class="pt-3">Secure Payment</p>
-        </div>
-        <div class="col-md-3">
-          <img src="../Images/support.jpg" alt="24/7 Support" style="height: 200px; width: 200px;" class="rounded-pill">
-          <p class="pt-3">24/7 Support</p>
-        </div>
-      </div>
-    </div>
-    <br>
-    <!-- Exclusive Offers & Vouchers Section -->
-    <div class="mt-5 mb-5 px-4">
-      <h1 class="text-black">Exclusive Offers & Vouchers</h1><br><br>
-      <div class="row text-center g-4">
-        <div class="col-md-4 d-flex">
-          <div class="card offer-card bg-white p-3 shadow rounded d-flex flex-column align-items-center">
-            <img src="../Images/offer1.jpg" class="img-fluid rounded offer-img" alt="Offer 1"> <br> <br>
-            <h4 class="mt-5 mb-5 pt-3 fw-bold text-center">Flat ₹50 Cashback</h4>
-            <p class="mt-auto pt-3 text-center">Get ₹50 cashback on your first recharge above ₹299</p>
+      <div class="row text-center g-4 mt-4">
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
+            <img src="../Images/reliable.jpg" alt="Reliable Network" style="height:200px; width:200px;" class="rounded-pill">
+            <p class="pt-3">Reliable Network</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex">
-          <div class="card offer-card bg-white text-black p-3 shadow rounded d-flex flex-column align-items-center">
-            <img src="../Images/offer2.jpg" class="img-fluid rounded offer-img" alt="Offer 2"> <br> <br> 
-            <h4 class="mt-3 mb-5 pt-3 fw-bold text-center">Double Data Offer</h4>
-            <p class="mt-auto pt-3 text-center">Recharge ₹399 & above to get double data benefits for 28 days.</p>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
+            <img src="../Images/deal.jpeg" alt="Exclusive Deals" style="height:200px; width:200px;" class="rounded-pill">
+            <p class="pt-3">Exclusive Deals</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex">
-          <div class="card offer-card bg-white p-3 shadow rounded d-flex flex-column align-items-center">
-            <img src="../Images/offer3.jpg" class="img-fluid rounded offer-img" alt="Offer 3">
-            <h4 class="mt-3 mb-3 fw-bold text-center">Super Voucher</h4>
-            <p class="mt-auto pt-3 text-center">Recharge ₹599 & get ₹100 shopping voucher for free.</p>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card">
+            <img src="../Images/secure.jpeg" alt="Secure Payment" style="height:200px; width:200px;" class="rounded-pill">
+            <p class="pt-3">Secure Payment</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card">
+            <img src="../Images/support.jpg" alt="24/7 Support" style="height:200px; width:200px;" class="rounded-pill">
+            <p class="pt-3">24/7 Support</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-    
+
+  <br>
+
+  <!-- Exclusive Offers & Vouchers Section (Carousel) -->
+  <div class="content-container mt-5 mb-5 px-4">
+    <div data-aos="fade-up">
+      <h1 class="text-black fw-bold">Exclusive Offers & Vouchers</h1>
+    </div>
+    <br><br>
+    <div id="offersCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-delay="200">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer1.jpg" alt="Offer 1">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Flat ₹50 Cashback</h4>
+                    <p>Get ₹50 cashback on your first recharge above ₹299</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer2.jpg" alt="Offer 2">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Double Data Offer</h4>
+                    <p>Recharge ₹399 &amp; above to get double data benefits for 28 days.</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer3.jpg" alt="Offer 3">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Super Voucher</h4>
+                    <p>Recharge ₹599 &amp; get ₹100 shopping voucher for free.</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer1.jpg" alt="Offer 4">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Instant Rebate</h4>
+                    <p>Get instant discounts on your recharge</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer2.jpg" alt="Offer 5">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Bonus Minutes</h4>
+                    <p>Extra talktime on selected plans</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer3.jpg" alt="Offer 6">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Special Discount</h4>
+                    <p>Special discount for loyal customers</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer1.jpg" alt="Offer 7">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Combo Offer</h4>
+                    <p>Plan+Data at low rates</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer2.jpg" alt="Offer 8">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Flash Sale</h4>
+                    <p>Limited period offer</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="offer-card">
+                <img src="../Images/offer3.jpg" alt="Offer 9">
+                <div class="offer-card-content">
+                  <div>
+                    <h4 class="fw-bold">Mega Savings</h4>
+                    <p>Save big on recharges</p>
+                  </div>
+                  <button class="btn btn-get-offer">Get Offer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Arrow Controls -->
+      <button class="carousel-control-prev round" type="button" data-bs-target="#offersCarousel" data-bs-slide="prev">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button class="carousel-control-next round" type="button" data-bs-target="#offersCarousel" data-bs-slide="next">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <br>
+
   <!-- Footer with Newsletter Subscription -->
   <footer>
     <div class="footer-top">
       <div class="content-container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <h5>Mobi-Comm Service Pvt Ltd</h5>
             <p>Connecting People, Anytime, Anywhere.</p>
+            <div class="social-icons">
+              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
             <h5>Quick Links</h5>
             <ul>
               <li><a href="About.html">About Us</a></li>
@@ -369,29 +1261,25 @@
               <li><a href="#">Refund Policy</a></li>
             </ul>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
             <h5>Connect With Us</h5>
             <p>Follow us on social media for the latest updates.</p>
-            <a href="#" class="me-2"><i class="bi bi-facebook icon-yellow"></i></a>
-            <a href="#" class="me-2"><i class="bi bi-twitter icon-yellow"></i></a>
-            <a href="#" class="me-2"><i class="bi bi-instagram icon-yellow"></i></a>
-            <a href="#"><i class="bi bi-linkedin icon-yellow"></i></a>
           </div>
         </div>
         <!-- Newsletter Signup Section -->
-        <div class="newsletter-section mt-4">
+        <div class="newsletter-section" data-aos="fade-up" data-aos-delay="400">
           <h5>Subscribe to Our Newsletter</h5>
           <p>Get the latest updates and exclusive offers delivered straight to your inbox.</p>
           <form action="#" class="newsletter-form" onsubmit="handleSubscription(event)">
             <input type="email" placeholder="Enter your email" required>
-            <button type="submit" class="btn btn-famera">Subscribe</button>
+            <button type="submit" class="btn">Subscribe</button>
           </form>
           <div id="subscription-message" class="subscription-message" style="display:none;">
             Subscribed! You will receive email notifications with our latest news and updates.
           </div>
           <div class="newsletter-extra mt-2">
             <p>
-              We value your privacy and promise not to spam your inbox. As a subscriber, you’ll get exclusive insights, early access to offers, and behind-the-scenes updates.
+              We value your privacy and promise not to spam your inbox. As a subscriber, you'll get exclusive insights, early access to offers, and behind-the-scenes updates.
             </p>
           </div>
         </div>
@@ -405,8 +1293,8 @@
   </footer>
 
   <!-- Modal for Email -->
-  <div class="modal" id="emailCard">
-    <div class="modal-dialog">
+  <div class="modal fade" id="emailCard">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Email</h4>
@@ -415,13 +1303,14 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
               <input type="email" id="email" class="form-control" placeholder="Enter your Email" required>
               <div id="emailError" class="text-danger mt-1"></div>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" id="planButton" class="btn bg-secondary text-black text-decoration-none">
+          <button type="button" id="planButton" class="btn">
             Continue
           </button>
         </div>
@@ -431,69 +1320,161 @@
 
   <!-- JavaScript for Validation, Modal Handling, and Subscription -->
   <script>
-    // Mobile Recharge and Email Modal Handling
     document.addEventListener("DOMContentLoaded", function () {
-      const mobileInput = document.getElementById("mobile_num");
-      const mobileError = document.getElementById("mobileError");
-      const continueButton = document.getElementById("continueButton");
-      const emailModal = new bootstrap.Modal(document.getElementById("emailCard"));
+  // Initialize AOS for scroll animations
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
+  });
 
-      continueButton.addEventListener("click", async function () {
-        const mobileNumber = mobileInput.value.trim();
-        const mobileRegex = /^[6-9]\d{9}$/;
-        if (!mobileRegex.test(mobileNumber)) {
-          mobileError.textContent = "Please enter a valid 10-digit mobile number.";
-          mobileInput.classList.add("is-invalid");
-          return;
-        } else {
-          mobileError.textContent = "";
-          mobileInput.classList.remove("is-invalid");
-        }
-        try {
-          const response = await fetch("/JSON/userNumber.json");
-          const data = await response.json();
-          const validNumbers = data.users.map(user => user.phone);
-          if (validNumbers.includes(mobileNumber)) {
-            emailModal.show();
-          } else {
-            mobileError.textContent = "This number is not registered with Mobi-Comm.";
-            mobileInput.classList.add("is-invalid");
-          }
-        } catch (error) {
-          mobileError.textContent = "Error validating number. Please try again later.";
-          console.error("Error fetching JSON data:", error);
-        }
-      });
+  /*** Mobile Recharge & Email Modal Handling ***/
+  const mobileInput = document.getElementById("mobile_num");
+  const mobileError = document.getElementById("mobileError");
+  const continueButton = document.getElementById("continueButton");
+  const emailModal = new bootstrap.Modal(document.getElementById("emailCard"));
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("emailError");
+  const planButton = document.getElementById("planButton");
 
-      const emailInput = document.getElementById("email");
-      const emailError = document.getElementById("emailError");
-      const planButton = document.getElementById("planButton");
-
-      planButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        const email = emailInput.value.trim();
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(email)) {
-          emailError.textContent = "Please enter a valid email address.";
-          emailInput.classList.add("is-invalid");
-        } else {
-          emailError.textContent = "";
-          emailInput.classList.remove("is-invalid");
-          window.location.href = "HomePage.html";
-        }
-      });
-    });
-
-  
-
-     
-
-
-    // Subscription function for the newsletter form in the footer.
-    function handleSubscription(event) {
-      event.preventDefault();
-      document.getElementById('subscription-message').style.display = 'block';
+  // Input focus animation for mobile field
+  mobileInput.addEventListener("focus", function() {
+    this.parentElement.classList.add("focused");
+  });
+  mobileInput.addEventListener("blur", function() {
+    if (this.value.trim() === "") {
+      this.parentElement.classList.remove("focused");
     }
+  });
+
+  // Continue button hover animation
+  continueButton.addEventListener("mouseover", function() {
+    this.classList.add("pulse");
+  });
+  continueButton.addEventListener("mouseout", function() {
+    this.classList.remove("pulse");
+  });
+
+  // Mobile number validation and modal handling on Continue click
+  continueButton.addEventListener("click", async function () {
+    // Add loading animation
+    this.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...';
+    this.disabled = true;
+
+    const mobileNumber = mobileInput.value.trim();
+    const mobileRegex = /^[6-9]\d{9}$/;
+
+    // Simulate delay before validation/fetch
+    setTimeout(async () => {
+      // Validate mobile number format
+      if (!mobileRegex.test(mobileNumber)) {
+        mobileInput.classList.add("is-invalid");
+        mobileError.textContent = "Please enter a valid 10-digit mobile number.";
+        continueButton.innerHTML = '<span>Continue</span>';
+        continueButton.disabled = false;
+        return;
+      } else {
+        mobileInput.classList.remove("is-invalid");
+        mobileError.textContent = "";
+      }
+
+      try {
+        // Fetch user data and check if the mobile number exists
+        const response = await fetch('db.json');
+        const data = await response.json();
+        const user = data.users.find(user => user.phone === mobileNumber);
+        
+        if (user) {
+          emailModal.show();
+        } else {
+          mobileError.textContent = "This number is not registered with Mobi-Comm.";
+          mobileInput.classList.add("is-invalid");
+        }
+      } catch (error) {
+        mobileError.textContent = "Error validating number. Please try again later.";
+        mobileInput.classList.add("is-invalid");
+        console.error("Error fetching JSON data:", error);
+      }
+      
+      // Restore button state
+      continueButton.innerHTML = '<span>Continue</span>';
+      continueButton.disabled = false;
+    }, 1000);
+  });
+
+  // Email validation and redirect on Plan button click
+  planButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    // Add loading animation to plan button
+    this.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...';
+    this.disabled = true;
+
+    const email = emailInput.value.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    setTimeout(() => {
+      if (!emailRegex.test(email)) {
+        emailError.textContent = "Please enter a valid email address.";
+        emailInput.classList.add("is-invalid");
+      } else {
+        emailError.textContent = "";
+        emailInput.classList.remove("is-invalid");
+        // Redirect to plans page if valid
+        window.location.href = "plans.html";
+      }
+      this.innerHTML = 'Continue';
+      this.disabled = false;
+    }, 1000);
+  });
+
+  /*** Offer Card Animations ***/
+  // Floating animation for offer cards
+  const offerCards = document.querySelectorAll('.offer-card');
+  offerCards.forEach((card, index) => {
+    card.style.animation = `float 3s ease-in-out ${index * 0.2}s infinite`;
+  });
+
+  // Pulse animation for Get Offer buttons on hover
+  const offerButtons = document.querySelectorAll('.btn-get-offer');
+  offerButtons.forEach(button => {
+    button.addEventListener('mouseover', function() {
+      this.style.animation = 'pulse 0.8s infinite';
+    });
+    button.addEventListener('mouseout', function() {
+      this.style.animation = 'none';
+    });
+  });
+
+  /*** Newsletter Subscription Functionality ***/
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const subscriptionMessage = document.getElementById('subscription-message');
+      const submitButton = event.target.querySelector('button');
+      
+      // Add loading state to subscription button
+      submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Subscribing...';
+      submitButton.disabled = true;
+      
+      // Simulate subscription process
+      setTimeout(() => {
+        subscriptionMessage.style.display = 'block';
+        subscriptionMessage.innerHTML = 'Subscribed! You will receive email notifications with our latest news and updates.';
+        
+        // Reset the subscription form
+        event.target.reset();
+        submitButton.innerHTML = 'Subscribe';
+        submitButton.disabled = false;
+        
+        // Animate subscription message appearance
+        subscriptionMessage.style.animation = 'fadeInUp 0.5s ease-out';
+      }, 1500);
+    });
+  }
+});
+
   </script>
 </body>
 </html>
